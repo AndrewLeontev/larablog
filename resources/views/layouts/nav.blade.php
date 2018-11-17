@@ -12,7 +12,13 @@
         <li><a href="/about">About</a></li>
         <li><a href="/">Blog</a></li>
         <li><a href="/contacts">Contacts</a></li>	
-        <li><a href="/posts/create">New Post</a></li>
+        {{-- <li><a href="/posts/create">New Post</a></li> --}}
+        @if (Auth::check())
+          <li><a href="/posts/create">{{ Auth::user()->name }}</a></li>
+        @else
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+        @endif
         							
       </ul>
       <script type="text/javascript" src="/js/responsive-nav.js"></script>
