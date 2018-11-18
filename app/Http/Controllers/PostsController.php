@@ -19,7 +19,7 @@ class PostsController extends Controller
     public function index() 
     {
         $posts = Post::latest();
-        $latest = latest()->take(3)->get();
+        $latest = Post::latest()->take(3)->get();
 
         if ($month = request('month')) {
             $posts->whereMonth('created_at', Carbon::parse($month)->month);
