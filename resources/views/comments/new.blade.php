@@ -5,10 +5,10 @@
 
       @include ('layouts.errors')
 
-      <div class="column_2">
+      {{-- <div class="column_2">
           <input type="text" required class="text" name="name" id="name" placeholder="Name">
           <input type="email" required class="text" name="email" id="email" style="margin-left: 4%" placeholder="Email">
-      </div>
+      </div> --}}
       
       <div class="column_3">
           <textarea name="body" required id="body" cols="30" rows="10" placeholder="Comment"></textarea>

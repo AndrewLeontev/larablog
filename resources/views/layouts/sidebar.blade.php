@@ -14,6 +14,22 @@
         <li><a href="/categories/technologies">Technologies</a></li>
         <li><a href="/categories/travel">Travel</a></li>
      </ul>
+     
+     <div class="blog_list2">
+         <h3>Recent Posts</h3>
+         @include ('layouts.recent')
+      </div>
+      
+     <ul class="blog-list1">
+        <h3>Archives</h3>
+         @foreach ($archives as $stats)
+            <li>
+               <a href="/?month={{ $stats['month'] }}&year={{ $stats['year'] }}">
+                  {{ $stats['month'] . ' ' . $stats['year'] }}
+               </a>
+            </li>
+         @endforeach
+     </ul>
      {{-- <ul class="blog-list1">
         <h3>Tags</h3>
         <li><a href="#">Web Design</a></li>
@@ -28,9 +44,5 @@
         <li><a href="#">Wordpress</a></li>
         <li><a href="#">Logo</a></li>
      </ul> --}}
-     <div class="blog_list2">
-      <h3>Recent Posts</h3>
-      @include ('layouts.recent')
-     </div>
    </div>
  <div class="clearfix"> </div>

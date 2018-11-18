@@ -4,8 +4,6 @@
 <div class="col-md-9">
 
     <h1>Create a Post</h1>
-
-    @if (Auth::check())
       <form method="POST" action="/posts">
           @csrf
 
@@ -33,9 +31,6 @@
 
           <button type="submit" class="btn btn-primary">Post</button>
         </form>
-    @else  
-        <h3>Login or Register for this</h3>
-    @endif
 
 </div>
 

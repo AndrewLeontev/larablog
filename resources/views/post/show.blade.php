@@ -5,17 +5,21 @@
 
     <div class="blog_left single_left post_show">
         <h2>{{ $post->title }}</h2>
-        <h3>Posted {{ $post->created_at->diffForHumans() }} in <a href="/categories/{{ strtolower($post->categories) }}">{{ strtolower($post->categories) }}</a> By <a href="#">Admin</a>.</h3>
+        <h3>Posted {{ $post->created_at->diffForHumans() }} in <a href="/categories/{{ strtolower($post->categories) }}">{{ strtolower($post->categories) }}</a> By <a href="/users/{{ $post->user->id }}">{{ $post->user->name }}</a>.</h3>
         <div class="post_content">{{ $post->body }}</div>
     </div>
 
     <div id="comments">
+        
         @include ('comments.show')
+        
     </div>
     
     <div class="clearfix"></div>
 
-    @include ('comments.new')
+    @if (Auth::check())
+        @include ('comments.new')
+    @endif
 
 </div>  
 @endsection

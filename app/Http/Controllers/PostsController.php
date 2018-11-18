@@ -4,16 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 use App;
+use Carbon\Carbon;
 
 class PostsController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show', 'search']);
+    }
 
     public function index() 
     {
-        $posts = Post::latest()->paginate(10);
-        $latest = Post::latest()->take(3)->get();
+        $posts = Post::latest();
+        $latest = latest()->take(3)->get();
+
+        if ($month = request('month')) {
+            $posts->whereMonth('created_at', Carbon::parse($month)->month);
+        }
+        if ($year = request('year')) {
+            $posts->whereYear('created_at', $year);
+        }
+        $posts = $posts->paginate(10);
 
         return view('posts.index', compact('posts', 'latest'));
     }
@@ -32,15 +46,17 @@ class PostsController extends Controller
         return view('posts.create', compact('latest'));
     }
 
-    public function store(Request $request)
+    public function store()
     {
         App::setLocale('ru');
-        $validatedData = $request->validate([
+        $this->validate(request(), [
             'title' => 'required|min:5|max:255|unique:posts',
             'body' => 'required|min:5|max:50000'
         ]);
-        
-        Post::create(request(['title', 'body', 'categories']));
+
+        auth()->user()->publish(
+            new Post(request(['title', 'body', 'categories']))
+        );
 
         return redirect('/');
     }

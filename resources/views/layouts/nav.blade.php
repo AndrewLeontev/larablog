@@ -10,11 +10,13 @@
       <ul class="nav" id="nav">
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="/">Blog</a></li>
         <li><a href="/contacts">Contacts</a></li>	
-        {{-- <li><a href="/posts/create">New Post</a></li> --}}
+        @if (Auth::check() && Auth::user()->administrator)
+          <li><a href="/posts/create">New Post</a></li>
+        @endif
         @if (Auth::check())
-          <li><a href="/posts/create">{{ Auth::user()->name }}</a></li>
+          <li><a href="/users/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a></li>
+          <li><a href="/logout">Logout</a></li>
         @else
           <li><a href="/login">Login</a></li>
           <li><a href="/register">Register</a></li>

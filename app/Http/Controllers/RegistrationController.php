@@ -13,7 +13,7 @@ class RegistrationController extends Controller
     {
         $latest = Post::latest()->take(3)->get();
 
-        return view('sessions.create', compact('latest'));
+        return view('registration.create', compact('latest'));
     }
 
     public function store()
@@ -26,7 +26,11 @@ class RegistrationController extends Controller
         ]);
 
         // Create and save the user
-        $user = User::create(request(['name', 'email', 'password']));
+        $user = User::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => bcrypt(request('password'))
+        ]);
 
         // Sign them in
         auth()->login($user);
