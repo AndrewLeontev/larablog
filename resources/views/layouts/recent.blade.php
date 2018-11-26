@@ -1,5 +1,5 @@
 
-    @foreach ($latest as $post)
+    @foreach ($latestPosts as $post)
         <ul class="blog-list3">
             <li class="blog-list3-desc">
                 <h4><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h4>

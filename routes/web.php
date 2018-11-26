@@ -43,9 +43,8 @@ Route::post('/register', 'RegistrationController@store');
 */
 Route::get('/categories/{category}', function($category) {
     $posts = Post::latest()->where('categories', 'LIKE', '%'. $category .'%')->paginate(10);
-    $latest = Post::latest()->take(3)->get();
 
-    return view('posts.index', compact('posts', 'latest'));
+    return view('posts.index', compact('posts'));
 });
 
 /* 
@@ -54,10 +53,8 @@ Route::get('/categories/{category}', function($category) {
 |--------------------------------------------------------------------------
 */
 Route::get('/about', function () {
-    $latest = Post::latest()->take(3)->get();
-    return view('static.about', compact('latest'));
+    return view('static.about');
 });
 Route::get('/contacts', function () {
-    $latest = Post::latest()->take(3)->get();
-    return view('static.contacts', compact('latest'));
+    return view('static.contacts');
 });

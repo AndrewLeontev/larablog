@@ -11,9 +11,8 @@ class RegistrationController extends Controller
     //
     public function create()
     {
-        $latest = Post::latest()->take(3)->get();
 
-        return view('registration.create', compact('latest'));
+        return view('registration.create');
     }
 
     public function store()

@@ -17,7 +17,15 @@ class AppServiceProvider extends ServiceProvider
         //
         Schema::defaultStringLength(191);
         view()->composer('layouts.sidebar', function($view) {
-            $view->with('archives', \App\Post::archives());
+            $view->with([
+                'archives' => \App\Post::archives(),
+                'latestPosts' => \App\Post::latestPosts()
+            ]);
+        });
+        view()->composer('layouts.footlatest', function($view) {
+            $view->with([
+                'latestPosts' => \App\Post::latestPosts()
+            ]);
         });
     }
 

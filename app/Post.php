@@ -33,4 +33,9 @@ class Post extends Model
             ->get()
             ->toArray();
     }
+
+    public static function latestPosts()
+    {
+        return static::latest()->take(3)->get();
+    }
 }

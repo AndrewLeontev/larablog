@@ -16,9 +16,7 @@ class SessionsController extends Controller
 
     public function create()
     {
-        $latest = Post::latest()->take(3)->get();
-
-        return view('sessions.create', compact('latest'));
+        return view('sessions.create');
     }
 
     public function store()
@@ -34,10 +32,8 @@ class SessionsController extends Controller
     }
 
     public function home()
-    {
-        $latest = Post::latest()->take(3)->get();
-        
-        return view('users.home', compact('latest'));
+    {      
+        return view('users.home');
     }
 
     public function destroy()

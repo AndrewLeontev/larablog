@@ -1,6 +1,6 @@
 <div class="col-md-3 footer_grid1">
     <h3>From the Blog</h3>
-    @foreach ($latest as $post)
+    @foreach ($latestPosts as $post)
       <ul class="list1 list2">
         {{-- <li class="list1_img"><img src="/images/f1.jpg" class="img-responsive" alt=""/></li> --}}
         <li class="list1_desc">

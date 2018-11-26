@@ -19,7 +19,6 @@ class PostsController extends Controller
     public function index() 
     {
         $posts = Post::latest();
-        $latest = Post::latest()->take(3)->get();
 
         if ($month = request('month')) {
             $posts->whereMonth('created_at', Carbon::parse($month)->month);
@@ -29,21 +28,19 @@ class PostsController extends Controller
         }
         $posts = $posts->paginate(10);
 
-        return view('posts.index', compact('posts', 'latest'));
+        return view('posts.index', compact('posts'));
     }
 
     public function show($id)
     {   
         $post = Post::find($id);
-        $latest = Post::latest()->take(3)->get();
 
-        return view('post.show', compact('post', 'latest'));
+        return view('post.show', compact('post'));
     }
 
     public function create() 
     {
-        $latest = Post::latest()->take(3)->get();
-        return view('posts.create', compact('latest'));
+        return view('posts.create');
     }
 
     public function store()
@@ -63,7 +60,6 @@ class PostsController extends Controller
 
     public function search()
     {
-        $latest = Post::latest()->take(3)->get();
         $searchstr = request('search');
 
         $posts = Post::latest()
@@ -71,6 +67,6 @@ class PostsController extends Controller
             ->orWhere('body', 'LIKE', '%'. $searchstr .'%')
             ->paginate(10);
 
-        return view('posts.search', compact('posts', 'latest', 'searchstr'));
+        return view('posts.search', compact('posts', 'searchstr'));
     }
 }
