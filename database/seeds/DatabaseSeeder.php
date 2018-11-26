@@ -17,5 +17,12 @@ class DatabaseSeeder extends Seeder
         Category::create(['name' => 'Web Design']);
         Category::create(['name' => 'Technologies']);
         Category::create(['name' => 'Travel']);
+        // default administrator user, password - admin
+        User::create([
+            'name' => 'Admin', 
+            'email' => 'admin@ex.com',
+            'administrator' => true, 
+            'password' => '$2y$10$sIIDD4jNaI8qfTlS.KocPe2/c5j6KeUDVjMigdhgBIKCAIdheeVlS'
+        ]);
     }
 }

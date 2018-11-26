@@ -18,7 +18,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-            // Given I have two records in the database that are posts,
+        // Given I have two records in the database that are posts,
         // and each one is posted a month apart.
         $first = factory(Post::class)->create();
         $second = factory(Post::class)->create([
