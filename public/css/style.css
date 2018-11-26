@@ -2850,3 +2850,11 @@ ul.about_social {
 .mx-auto {
   margin-left: auto !important;
 }	
+
+.unauth {
+	margin: 20px;
+}
+
+.unauth a {
+	color: #00AEFF;
+}

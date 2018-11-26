@@ -42,7 +42,7 @@ Route::post('/register', 'RegistrationController@store');
 |--------------------------------------------------------------------------
 */
 Route::get('/categories/{category}', function($category) {
-    $posts = Post::latest()->where('categories', 'LIKE', '%'. $category .'%')->paginate(10);
+    $posts = Post::latest()->where('category_id', 'LIKE', '%'. $category .'%')->paginate(10);
 
     return view('posts.index', compact('posts'));
 });

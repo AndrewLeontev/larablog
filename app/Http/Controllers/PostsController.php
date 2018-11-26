@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use App\Category;
 use App;
 use Carbon\Carbon;
 
@@ -40,7 +41,9 @@ class PostsController extends Controller
 
     public function create() 
     {
-        return view('posts.create');
+        $categories = Category::all();
+
+        return view('posts.create', compact('categories'));
     }
 
     public function store()
@@ -52,7 +55,7 @@ class PostsController extends Controller
         ]);
 
         auth()->user()->publish(
-            new Post(request(['title', 'body', 'categories']))
+            new Post(request(['title', 'body', 'category_id']))
         );
 
         return redirect('/');

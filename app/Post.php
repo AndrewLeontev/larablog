@@ -8,11 +8,16 @@ use Carbon\Carbon;
 class Post extends Model
 {
     //
-    protected $fillable = ['title', 'body', 'categories', 'user_id'];
+    protected $fillable = ['title', 'body', 'category_id', 'user_id'];
 
     public function comments()
     {
         return $this->hasMany(Comment::class)->latest();
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function addComment($user_id, $name, $email, $body)

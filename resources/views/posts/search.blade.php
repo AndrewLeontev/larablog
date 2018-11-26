@@ -24,7 +24,7 @@
 					{{-- <a href="single.html" class="mask"><img src="/images/blog.jpg" alt="image" class="img-responsive zoom-img"></a> --}}
 				
 					<h2><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h2>
-					<h3>Posted {{ $post->created_at }} in <a href="/categories/{{ strtolower($post->categories) }}">{{ strtolower($post->categories) }}</a> By <a href="#">Admin</a>.</h3>
+					<h3>Posted {{ $post->created_at }} in <a href="/categories/{{ $post->category_id }}">{{ $post->category->name }}</a> By <a href="#">Admin</a>.</h3>
 					<div><p>{{ substr($post->body, 0, 250) }}</p></div>
 				</div>
 				<hr style="border: 1px solid darkgray">	

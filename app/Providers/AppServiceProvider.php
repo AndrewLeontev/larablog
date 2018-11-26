@@ -19,7 +19,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts.sidebar', function($view) {
             $view->with([
                 'archives' => \App\Post::archives(),
-                'latestPosts' => \App\Post::latestPosts()
+                'latestPosts' => \App\Post::latestPosts(),
+                'categories' => \App\Category::getAll()
             ]);
         });
         view()->composer('layouts.footlatest', function($view) {

@@ -20,12 +20,14 @@
           </div>
 
           <div class="form-group">
-            <label for="categories">Categories</label>
-            <select name="categories" id="categories" class="form-control">
-              <option value="web development">Web Development</option>
-              <option value="web design">Web Design</option>
+            <label for="category_id">Categories</label>
+            <select name="category_id" id="category_id" class="form-control">
+              @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+              @endforeach
+              {{-- <option value="web design">Web Design</option>
               <option value="technologies">Technologies</option>
-              <option value="travel">Travel</option>
+              <option value="travel">Travel</option> --}}
             </select>
           </div>
 

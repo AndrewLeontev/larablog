@@ -9,10 +9,9 @@
      <img src="/images/2.jpg" class="img-responsive" alt=""/>
      <ul class="blog-list">
         <h3>Categories</h3>
-        <li><a href="/categories/web%20design">Web Design</a></li>
-        <li><a href="/categories/web%20development">Web Development</a></li>
-        <li><a href="/categories/technologies">Technologies</a></li>
-        <li><a href="/categories/travel">Travel</a></li>
+        @foreach ($categories as $category)
+        <li><a href="/categories/{{ $category->id }}">{{ $category->name }}</a></li>
+        @endforeach
      </ul>
      
      <div class="blog_list2">

@@ -1,5 +1,5 @@
 <div class="single_contact">
-  <h1>Leave Reply</h1>
+  <h3>Leave Reply</h3>
   <form method="POST" action="/posts/{{ $post->id }}/comments">
       {{ csrf_field() }}
 
