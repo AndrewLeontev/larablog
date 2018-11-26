@@ -15,7 +15,7 @@
           <li><a href="/posts/create">New Post</a></li>
         @endif
         @if (Auth::check())
-          <li><a href="/users/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a></li>
+          <li><a href="/home">{{ Auth::user()->name }}</a></li>
           <li><a href="/logout">Logout</a></li>
         @else
           <li><a href="/login">Login</a></li>

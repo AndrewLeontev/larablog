@@ -11,7 +11,7 @@ class SessionsController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('guest')->except(['destroy', 'home']);
+        $this->middleware('guest')->except(['destroy', 'home', 'show']);
     }
 
     public function create()
@@ -33,7 +33,17 @@ class SessionsController extends Controller
 
     public function home()
     {      
-        return view('users.home');
+        $posts = Post::latest()->where('user_id', auth()->id())->get();
+
+        return view('users.home', compact('posts'));
+    }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+        $posts = Post::latest()->where('user_id', $user->id)->get();
+        
+        return view('users.show', compact('user', 'posts'));
     }
 
     public function destroy()
