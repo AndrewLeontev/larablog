@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use App\Category;
-use App;
+use App\Repositories\Posts;
 use Carbon\Carbon;
 
 class PostsController extends Controller
@@ -17,17 +17,14 @@ class PostsController extends Controller
         $this->middleware('auth')->except(['index', 'show', 'search']);
     }
 
-    public function index() 
+    public function index(Posts $posts) 
     {
-        $posts = Post::latest();
+        $posts = $posts->all();
+        // $posts = (new \App\Repositories\Posts)->all();
 
-        if ($month = request('month')) {
-            $posts->whereMonth('created_at', Carbon::parse($month)->month);
-        }
-        if ($year = request('year')) {
-            $posts->whereYear('created_at', $year);
-        }
-        $posts = $posts->paginate(10);
+        // $posts = Post::latest()
+        //     ->filter(request()->only(['month', 'year']))
+        //     ->paginate(10);
 
         return view('posts.index', compact('posts'));
     }
