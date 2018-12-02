@@ -35,7 +35,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	        		if(w > 320 && menu.is(':hidden')) {
 	        			menu.removeAttr('style');
 	        		}
-	    		});
+					});
+					
 			});
 		</script>
 		<!----//End-top-nav-script---->
@@ -46,11 +47,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	@include ('layouts.nav')
 
 <div class="services">
-		<div class="container">
-	
+	<div class="container">
+
+		@if ($flash = session('message'))
+			<div id="flash-message" class="alert alert-info" role="alert">
+				{{ $flash }}
+				<span id="flash-message-btn" class="close"></span>
+			</div>
+		@endif
+
 		@yield ('content')
 		@include ('layouts.sidebar')
-
 	</div>
 </div>
 	@include ('layouts.footer')

@@ -27,7 +27,7 @@ class SessionsController extends Controller
                 'message' => 'Wrong email or password. Please check and try again.'
             ]);
         }
-        
+        session()->flash('message', 'You\'re sign up!');
         return redirect()->home();
     }
 
@@ -49,7 +49,7 @@ class SessionsController extends Controller
     public function destroy()
     {
         auth()->logout();
-
+        session()->flash('message', 'Session closed. Goodbye!');
         return redirect('/');
     }
 }

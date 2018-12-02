@@ -25,10 +25,12 @@
               @foreach ($categories as $category)
                 <option value="{{ $category->id }}">{{ $category->name }}</option>
               @endforeach
-              {{-- <option value="web design">Web Design</option>
-              <option value="technologies">Technologies</option>
-              <option value="travel">Travel</option> --}}
             </select>
+          </div>
+
+          <div class="form-group">
+              <label for="tags">Tags</label>
+              <input type="text" class="form-control" id="tags"  name="tags">
           </div>
 
           <button type="submit" class="btn btn-primary">Post</button>

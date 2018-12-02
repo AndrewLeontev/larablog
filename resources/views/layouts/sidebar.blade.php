@@ -29,19 +29,11 @@
             </li>
          @endforeach
      </ul>
-     {{-- <ul class="blog-list1">
+     <ul class="blog-list1">
         <h3>Tags</h3>
-        <li><a href="#">Web Design</a></li>
-        <li><a href="#">Html5</a></li>
-        <li><a href="#">Wordpress</a></li>
-        <li><a href="#">Logo</a></li>
-        <li><a href="#">Web Design</a></li>
-        <li><a href="#">Web Design</a></li>
-        <li><a href="#">Wordpress</a></li>
-        <li><a href="#">Web Design</a></li>
-        <li><a href="#">Html5</a></li>
-        <li><a href="#">Wordpress</a></li>
-        <li><a href="#">Logo</a></li>
-     </ul> --}}
+        @foreach ($tags as $tag)
+            <li><a href="/posts/tags/{{ $tag }}">{{ $tag }}</a></li>
+        @endforeach
+     </ul>
    </div>
  <div class="clearfix"> </div>

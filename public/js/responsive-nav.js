@@ -14,6 +14,22 @@ $(document).ready(function() {
 		$(".nav").toggle();
 	});
 	adjustMenu();
+
+	// $("#flash-message-btn").click(function(e) {
+	// 	e.preventDefault();
+	// 	$("#flash-message").css("visibility", "hidden");
+	// })
+
+		// $('#flash-message').onload(function(){
+		// 	$('#flash-message').fadeIn(200,function(){
+		// 			$('#flash-message').animate({'top':'20px'},200);
+		// 	});
+		// });
+	$('#flash-message-btn').click(function(){
+			$('#flash-message').animate({'top':'-200px'},500,function(){
+					$('#flash-message').fadeOut('fast');
+			});
+	});
 })
 
 $(window).bind('resize orientationchange', function() {

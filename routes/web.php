@@ -14,11 +14,11 @@ use App\Post;
 
 Route::get('/', 'PostsController@index');
 Route::get('/posts/create', 'PostsController@create');
-Route::get('/search', 'PostsController@search');
 Route::get('/posts/{post}', 'PostsController@show');
-
+Route::get('/posts/tags/{tag}', 'TagsController@index');
 Route::post('/posts', 'PostsController@store');
 Route::post('/posts/{post}/comments', 'CommentsController@store');
+Route::get('/search', 'PostsController@search');
 
 /* 
 |--------------------------------------------------------------------------

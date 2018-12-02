@@ -18,16 +18,24 @@ class AppServiceProvider extends ServiceProvider
         //
         Schema::defaultStringLength(191);
         view()->composer('layouts.sidebar', function($view) {
-            $view->with([
-                'archives' => \App\Post::archives(),
-                'latestPosts' => \App\Post::latestPosts(),
-                'categories' => \App\Category::getAll()
-            ]);
+            $archives = \App\Post::archives();
+            $latestPosts = \App\Post::latestPosts();
+            $categories = \App\Category::getAll();
+            $tags = \App\Tag::pluck('name')->take(50);
+
+            $view->with(
+                compact('archives', 'latestPosts', 'categories', 'tags')
+            );
         });
         view()->composer('layouts.footlatest', function($view) {
-            $view->with([
-                'latestPosts' => \App\Post::latestPosts()
-            ]);
+            $latestPosts = \App\Post::latestPosts();
+
+            $view->with(compact('latestPosts'));
+        });
+        view()->composer('layouts.footer', function($view) {
+            $tags = \App\Tag::pluck('name')->take(25);
+
+            $view->with(compact('tags'));
         });
     }
 

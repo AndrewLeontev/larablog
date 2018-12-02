@@ -1567,11 +1567,11 @@ img.zoom-img {
 }
 .blog_left h3{
 	font-size: 0.85em;
-	color: #C7C7C7;
+	color: #9c9b9b;
 	font-weight: 100;
 }
 .blog_left h3 a{
-	color:#40c0cb;
+	color:#24a7c5;
 }
 .blog_left p, .single_contact p{
 	font-size:1.1em;
@@ -2862,3 +2862,53 @@ ul.about_social {
 .myposts {
 	margin-top: 50px;
 }
+
+#flash-message {
+	position:fixed;
+	top:85px;
+	left:30%;
+	right:30%;
+	background-color:#fff;
+	color:#7F7F7F;
+	padding:20px;
+	border:2px solid #ccc;
+	-moz-border-radius: 20px;
+	-webkit-border-radius:20px;
+	-khtml-border-radius:20px;
+	-moz-box-shadow: 0 1px 5px #333;
+	-webkit-box-shadow: 0 1px 5px #333;
+	z-index:101;
+}
+
+.close {
+	float:right;
+    width:26px;
+    height:26px;
+    background:transparent url(http://tympanus.net/Tutorials/CSSOverlay/images/cancel.png) repeat top left;
+    margin-top:-30px;
+    margin-right:-30px;
+    cursor:pointer;
+	}
+
+	.tags {
+		margin: 25px 0 10px 0;
+	}
+
+	.tags ul {
+		padding: 0;
+		list-style: none;
+	}
+	.tags ul li {
+		margin: 10px 2px;
+	}
+	.tags ul li a{
+		color: white;
+		text-shadow: #9c9b9b;
+		font-size: 14px;
+	}
+	.tags-head {
+		font-size: 0.85em;
+		color: #9c9b9b;
+		font-weight: 100;
+		font-size: 16px;
+	}

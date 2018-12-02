@@ -26,6 +26,9 @@
 					<h2><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h2>
 					<h3>Posted {{ $post->created_at }} in <a href="/categories/{{ $post->category_id }}">{{ $post->category->name }}</a> By <a href="#">Admin</a>.</h3>
 					<div><p>{{ substr($post->body, 0, 250) }}</p></div>
+
+					@include ('post.tags')
+
 				</div>
 				<hr style="border: 1px solid darkgray">	
 				<br>	

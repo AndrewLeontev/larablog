@@ -4,7 +4,7 @@
       <ul class="list1 list2">
         {{-- <li class="list1_img"><img src="/images/f1.jpg" class="img-responsive" alt=""/></li> --}}
         <li class="list1_desc">
-          <p class="m_3">{{ $post->title }}</p>
+          <a href="/posts/{{ $post->id }}"><p class="m_3">{{ $post->title }}</p></a>
           <p class="m_2">{{ $post->created_at->formatLocalized('%B %d, %Y')}}</p>
         </li>
         <div class="clearfix"> </div>

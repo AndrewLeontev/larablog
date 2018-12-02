@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
 use App\Post;
 use App\User;
 use App\Category;
+use App\Tag;
 use App\Repositories\Posts;
 use Carbon\Carbon;
 
@@ -54,6 +56,19 @@ class PostsController extends Controller
         auth()->user()->publish(
             new Post(request(['title', 'body', 'category_id']))
         );
+
+        preg_match_all('/[^\W\d][\w]*/', request('tags'), $newTags);
+        $post = Post::where('title', request(['title']))->first();
+        foreach ($newTags as $tagList) {
+           foreach ($tagList as $tag) {
+                $dbTag = Tag::firstOrCreate(
+                    ['name' => $tag]
+                );
+                if (!$post->tags()->where('id', $dbTag->id)->first()) {
+                    $post->tags()->attach([$dbTag->id]);
+                }
+           }
+        };
 
         return redirect('/');
     }
