@@ -18,6 +18,7 @@ class CommentsController extends Controller
 
 
         $post->addComment(auth()->id(), auth()->user()->name, auth()->user()->email, request('body'));
+        session()->flash('message', 'Comment was added');
 
         return back();
     }

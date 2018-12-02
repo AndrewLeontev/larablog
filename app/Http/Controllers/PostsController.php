@@ -77,6 +77,7 @@ class PostsController extends Controller
            }
         };
 
+        session()->flash('message', 'Post have been created!');
         return redirect('/');
     }
 
