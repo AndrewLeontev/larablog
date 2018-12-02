@@ -8,6 +8,7 @@ use App\Post;
 use App\User;
 use App\Category;
 use App\Tag;
+use GrahamCampbell\Markdown\Facades\Markdown;
 use App\Repositories\Posts;
 use Carbon\Carbon;
 
@@ -53,8 +54,14 @@ class PostsController extends Controller
             'body' => 'required|min:5|max:50000'
         ]);
 
+        // request(['title', Markdown::convertToHtml('body'), 'category_id']))
         auth()->user()->publish(
-            new Post(request(['title', 'body', 'category_id']))
+            new Post(
+                [
+                    'title' => request('title'),
+                    'body' => request('body'), // Markdown::convertToHtml(request('body')),
+                    'category_id' => request('category_id'),
+                ]) 
         );
 
         preg_match_all('/[^\W\d][\w]*/', request('tags'), $newTags);

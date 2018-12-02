@@ -11,7 +11,6 @@ class CategoriesController extends Controller
     //
     public function index(Category $category)
     {
-        // $posts = $tag->posts;
         $posts = $category->posts()->where('id', $category->id)->paginate(10);
 
         return view('posts.index', compact('posts'));

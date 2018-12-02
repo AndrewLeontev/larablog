@@ -16,7 +16,7 @@
 
           <div class="form-group">
             <label for="body">Body</label>
-            <textarea name="body" class="form-control" id="body" cols="30" rows="10"></textarea>
+            <textarea name="body" class="form-control" id="body inp" cols="30" rows="10"></textarea>
           </div>
 
           <div class="form-group">
@@ -37,5 +37,9 @@
         </form>
 
 </div>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
+<script>
+  var simplemde = new SimpleMDE({ element: document.getElementById("body inp") });
+</script>
 @endsection

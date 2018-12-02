@@ -1,3 +1,5 @@
-1. Add model for Groups
-2. Add model for Tags
-3. ... 
+
+$post = $user->posts()->find(3);
+$post->comments()->delete();
+$post->tags()->detach();
+$post->delete();
