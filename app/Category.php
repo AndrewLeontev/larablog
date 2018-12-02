@@ -16,4 +16,9 @@ class Category extends Model
     {
         return static::all();
     }
+    
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
 }

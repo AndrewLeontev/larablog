@@ -40,11 +40,12 @@ Route::post('/register', 'RegistrationController@store');
 | Categories
 |--------------------------------------------------------------------------
 */
-Route::get('/categories/{category}', function($category) {
-    $posts = Post::latest()->where('category_id', 'LIKE', '%'. $category .'%')->paginate(10);
+// Route::get('/categories/{category}', function($category) {
+//     $posts = Post::latest()->where('category_id', 'LIKE', '%'. $category .'%')->paginate(10);
 
-    return view('posts.index', compact('posts'));
-});
+//     return view('posts.index', compact('posts'));
+// });
+Route::get('/categories/{category}', 'CategoriesController@index');
 
 /* 
 |--------------------------------------------------------------------------
