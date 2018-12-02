@@ -2912,3 +2912,34 @@ ul.about_social {
 		font-weight: 100;
 		font-size: 16px;
 	}
+
+/* post-body  */
+	.post-body img {
+		max-width: 760px;
+	}
+
+	.post-body ul, ol {
+		margin: 15px 10px;
+	}
+
+	.post-body h1, h2, h3, h4, h5, h6 {
+		color: black; 
+	}
+	.post-body h1 {
+		font-size: 32px;
+	}
+	.post-body h2 {
+		font-size: 24px;
+	}
+	.post-body h3 {
+		font-size: 19px;
+	}
+	.post-body h4 {
+		font-size: 16px;
+	}
+	.post-body h5 {
+		font-size: 13px;
+	}
+	.post-body h6 {
+		font-size: 11px;
+	}
