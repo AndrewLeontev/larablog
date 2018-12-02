@@ -2914,16 +2914,17 @@ ul.about_social {
 	}
 
 /* post-body  */
+.post-body {
+	font-size: 16px;
+}
 	.post-body img {
 		max-width: 760px;
+		display: block;
+		margin: 0 auto;
 	}
 
 	.post-body ul, ol {
 		margin: 15px 10px;
-	}
-
-	.post-body: {
-		font-size: 16px;
 	}
 
 	.post-body h1, h2, h3, h4, h5, h6 {
