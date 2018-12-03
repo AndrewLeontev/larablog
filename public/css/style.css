@@ -2916,7 +2916,7 @@ ul.about_social {
 /* post-body  */
 .post-body {
 	font-size: 16px;
-	margin-top: -20px;
+	
 }
 	.post-body img {
 		max-width: 760px;
@@ -2929,25 +2929,25 @@ ul.about_social {
 	}
 
 	.post-body h1, h2, h3, h4, h5, h6 {
-		color: black; 
+		color: black !important; 
 	}
 	.post-body h1 {
-		font-size: 32px;
+		font-size: 32px !important;
 	}
 	.post-body h2 {
-		font-size: 24px;
+		font-size: 24px !important;
 	}
 	.post-body h3 {
-		font-size: 19px;
+		font-size: 19px !important;
 	}
 	.post-body h4 {
-		font-size: 16px;
+		font-size: 16px !important;
 	}
 	.post-body h5 {
-		font-size: 13px;
+		font-size: 13px !important;
 	}
 	.post-body h6 {
-		font-size: 11px;
+		font-size: 11px !important;
 	}
 
 .user-sidebar {
