@@ -2981,3 +2981,7 @@ ul.about_social {
 	.post-head .btn-post a { 
 		float: right;
 	}
+
+#btn-tooltip {
+	font-size: 20px;
+}

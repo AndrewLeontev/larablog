@@ -15,7 +15,7 @@
 							<h3 class="info">Posted {{ $post->created_at->diffForHumans() }} in <a href="/categories/{{ $post->category->name }}">{{ $post->category->name }}</a> By <a href="/users/{{ $post->user->id }}">{{ $post->user->name }}</a>.</h3>
 							<div class="btn-post">
 								@if (Auth::check() && Auth::user()->get() == $post->user()->get())
-									<a href="/posts/{{ $post->id }}/delete"><i class="fas fa-trash-alt"></i></a>
+									<a id="btn-tooltip" title="Delete post" href="/posts/{{ $post->id }}/delete"><i class="fas fa-trash-alt"></i></a>
 								@endif
 							</div>
 					</div>
