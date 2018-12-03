@@ -4,11 +4,6 @@
 
 	<div class="col-md-9">
             @if (Auth::check())
-                <h3>Hello, {{ Auth::user()->name}}!</h3>
-                <a class="btn btn-info" href="/posts/create">Create new post</a>
-                
-                <div class="clearfix"></div>
-
                 <h3 class="myposts">My posts: </h3>
                 @if (count($posts))
                     @foreach ($posts as $post)

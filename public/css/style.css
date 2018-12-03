@@ -2948,3 +2948,18 @@ ul.about_social {
 	.post-body h6 {
 		font-size: 11px;
 	}
+
+.user-sidebar {
+	margin-bottom: 15px;
+}
+	.avatar {
+		max-width: 255px;
+		max-height: 357px;
+		border-radius: 50%;
+	}
+
+	.new-post {
+		float: left;
+		width: 100%;
+		margin: 10px 0px;
+	}

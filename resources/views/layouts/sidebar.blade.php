@@ -6,7 +6,28 @@
         <input type="submit" value="">
        </form>
      </div>
-     <img src="/images/2.jpg" class="img-responsive" alt=""/>
+
+     <?php
+      $user = Auth::user();
+     ?>
+      <div class="user-sidebar">
+         @if (Auth::check())
+            <h3>Logged in as {{ $user->name }} <br> Posts: <a href="/home">{{ count($user->posts()->get()) }}</a></h3>
+            <img class="img-responsive avatar" src="/images/blog_s4.png" alt="avatar">
+            <div class="btn-side">
+                  <a class="btn btn-info new-post" href="/posts/create">Create new post</a>
+                  <a class="btn btn-info new-post" href="#">Edit profile</a>
+                  <a class="btn btn-info new-post" href="#">Dashboard</a>
+                  <a class="btn btn-info new-post" href="/logout">Logout</a>
+            </div>
+         @else
+         <a class="btn btn-info new-post" href="/login">Login</a>
+         <a class="btn btn-info new-post" href="/register">Register</a>
+         {{-- <img src="/images/2.jpg" class="img-responsive" alt=""/> --}}
+         @endif
+      </div>
+      <div class="clearfix"> </div>
+
      <ul class="blog-list">
         <h3>Categories</h3>
         @foreach ($categories as $category)
