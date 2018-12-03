@@ -92,4 +92,14 @@ class PostsController extends Controller
 
         return view('posts.search', compact('posts', 'searchstr'));
     }
+
+    public function delete($postId)
+    {
+        $post = Post::find($postId);
+        $post->comments()->delete();
+        $post->tags()->detach();
+        $post->delete();
+        session()->flash('message', 'Post has been deleted');
+        return redirect('/');
+    }
 }

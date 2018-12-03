@@ -2916,6 +2916,7 @@ ul.about_social {
 /* post-body  */
 .post-body {
 	font-size: 16px;
+	margin-top: -40px;
 }
 	.post-body img {
 		max-width: 760px;
@@ -2962,4 +2963,21 @@ ul.about_social {
 		float: left;
 		width: 100%;
 		margin: 10px 0px;
+	}
+
+.post-head {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas: "head head btn-post" "info info info";
+}
+	.post-head .info { grid-area: info; }
+
+	.post-head .head { grid-area: head; }
+
+	.post-head .btn-post { 
+		grid-area: btn-post; 
+	}
+	.post-head .btn-post a { 
+		float: right;
 	}

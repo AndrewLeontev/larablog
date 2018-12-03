@@ -19,6 +19,7 @@ Route::get('/posts/tags/{tag}', 'TagsController@index');
 Route::post('/posts', 'PostsController@store');
 Route::post('/posts/{post}/comments', 'CommentsController@store');
 Route::get('/search', 'PostsController@search');
+Route::get('/posts/{id}/delete', 'PostsController@delete');
 
 /* 
 |--------------------------------------------------------------------------
