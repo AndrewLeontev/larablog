@@ -20,7 +20,12 @@
     
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" id="email"  name="email" value="{{ $user->email }}">
+                <input type="email" class="form-control" id="email"  name="email" value="{{ $user->email }}">
+              </div>
+
+              <div class="form-group">
+                <label for="password">For submiting changes type password</label>
+                <input type="password" class="form-control" id="password"  name="password">
               </div>
     
     

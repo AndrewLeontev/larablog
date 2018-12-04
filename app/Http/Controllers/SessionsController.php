@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use Hash;
 
 class SessionsController extends Controller
 {
@@ -51,10 +52,20 @@ class SessionsController extends Controller
             session()->flash('message', 'You don\'t have permission!');
             return redirect ('/home');
         };
-        $user->update($request->all());
+
+        $pwd = request('password');
         
-        session()->flash('message', 'User have been updated!');
-        return redirect()->home();
+        if (Hash::check($pwd, $user->password)) {
+            //add logic here
+            
+            $user->update($request->only('name', 'email'));
+            session()->flash('message', 'User have been updated!');
+            return redirect()->home();
+        } else {
+            return back()->withErrors([
+                'message' => 'Wrong password. Please check and try again.'
+            ]);
+        } 
     }
 
     public function home()
