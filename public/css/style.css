@@ -2929,19 +2929,23 @@ ul.about_social {
 	}
 
 	.post-body h1, h2, h3, h4, h5, h6 {
-		color: black !important; 
+		color: black; 
 	}
 	.post-body h1 {
 		font-size: 32px !important;
+		color: black  !important;
 	}
 	.post-body h2 {
 		font-size: 24px !important;
+		color: black  !important;
 	}
 	.post-body h3 {
 		font-size: 19px !important;
+		color: black  !important; 
 	}
 	.post-body h4 {
 		font-size: 16px !important;
+		color: black  !important;
 	}
 	.post-body h5 {
 		font-size: 13px !important;
@@ -2984,4 +2988,17 @@ ul.about_social {
 
 #btn-tooltip {
 	font-size: 20px;
+	margin: 0 5px;
+}
+
+.tags ul li a{
+	text-shadow: #768384;
+	color: #184448;
+	font-weight: 600;
+	/* background: #40c0cb; */
+}
+.tags ul li a:hover{
+	text-shadow: #768384;
+	color: white;
+	/* background: #40c0cb; */
 }

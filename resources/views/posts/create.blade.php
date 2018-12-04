@@ -33,7 +33,7 @@
               <input type="text" class="form-control" id="tags"  name="tags">
           </div>
 
-          <button type="submit" class="btn btn-primary">Post</button>
+          <center><button type="submit" class="btn btn-primary">Post</button></center>
         </form>
 
 </div>

@@ -39,6 +39,19 @@ class PostsController extends Controller
         return view('post.show', compact('post'));
     }
 
+    public function edit($id)
+    {   
+        $post = Post::find($id);
+        $categories = Category::all();
+        
+        if ($post->user()->first()->id != auth()->user()->id) {
+            session()->flash('message', 'You don\'t have permission!');
+            return back();
+        };
+
+        return view('post.edit', compact('post', 'categories'));
+    }
+
     public function create() 
     {
         $categories = Category::all();
@@ -81,6 +94,34 @@ class PostsController extends Controller
         return redirect('/');
     }
 
+    public function update(Request $request)
+    {
+        $post = Post::where('id', $request->id)->first();
+
+        if ($post->user()->first()->id != auth()->user()->id) {
+            session()->flash('message', 'You don\'t have permission!');
+            return redirect ('/posts/' . $request->id);
+        };
+
+        $post->update($request->only('title', 'body', 'category_id'));
+        
+        preg_match_all('/[^\W\d][\w]*/', request('tags'), $newTags);
+        $post->tags()->detach();
+        foreach ($newTags as $tagList) {
+           foreach ($tagList as $tag) {
+                $dbTag = Tag::firstOrCreate(
+                    ['name' => $tag]
+                );
+                if (!$post->tags()->where('id', $dbTag->id)->first()) {
+                    $post->tags()->attach([$dbTag->id]);
+                }
+           }
+        };
+
+        session()->flash('message', 'Post have been updated!');
+        return redirect('/');
+    }
+
     public function search()
     {
         $searchstr = request('search');
@@ -96,6 +137,12 @@ class PostsController extends Controller
     public function delete($postId)
     {
         $post = Post::find($postId);
+
+        if ($post->user()->first()->id != auth()->user()->id) {
+            session()->flash('message', 'You don\'t have permission!');
+            return back();
+        };
+
         $post->comments()->delete();
         $post->tags()->detach();
         $post->delete();
