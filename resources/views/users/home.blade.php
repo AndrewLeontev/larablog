@@ -12,8 +12,9 @@
                                     <h2 class="head"><a href="/posts/{{ strtolower($post->id) }}">{{ $post->title }}</a></h2>
                                     <h3 class="info">Posted {{ $post->created_at->diffForHumans() }} in <a href="/categories/{{ $post->category->name }}">{{ $post->category->name }}</a> By <a href="/users/{{ $post->user->id }}">{{ $post->user->name }}</a>.</h3>
                                     <div class="btn-post">
-                                        @if (Auth::check() && Auth::user()->get() == $post->user()->get())
-									        <a id="btn-tooltip" title="Delete post" href="/posts/{{ $post->id }}/delete"><i class="fas fa-trash-alt"></i></a>                                            
+        								@if (Auth::check() && Auth::user()->first() == $post->user()->first())                                
+                                            <a id="btn-tooltip" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a>
+                                            <a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->id }}/edit"><i class="fas fa-edit"></i></a>
                                         @endif
                                     </div>
                             </div>
@@ -27,6 +28,16 @@
                             </div>
 
                             <h3>Comments: <a href="/posts/{{ strtolower($post->id) }}#comments">{{ count($post->comments) }}</a></h3>
+                        </div>
+                        <div id="dialogEffects" class="sally">
+                            <div id="somedialog" class="dialog">
+                                <div class="dialog__overlay"></div>
+                                <div class="dialog__content">
+                                    <h2><strong>Do you really want to delete this post?</h2>
+                                    <div><button class="action" ><a href="/posts/{{ $post->id }}/delete">Yes</a></button>
+                                    <button class="action" data-dialog-close="">Close</button></div>
+                                </div>
+                            </div>
                         </div>
                     @endforeach  
                 @else 

@@ -43,7 +43,7 @@ class PostsController extends Controller
     {   
         $post = Post::find($id);
         $categories = Category::all();
-        
+
         if ($post->user()->first()->id != auth()->user()->id) {
             session()->flash('message', 'You don\'t have permission!');
             return back();
@@ -67,12 +67,11 @@ class PostsController extends Controller
             'body' => 'required|min:5|max:50000'
         ]);
 
-        // request(['title', Markdown::convertToHtml('body'), 'category_id']))
         auth()->user()->publish(
             new Post(
                 [
                     'title' => request('title'),
-                    'body' => request('body'), // Markdown::convertToHtml(request('body')),
+                    'body' => request('body'),
                     'category_id' => request('category_id'),
                 ]) 
         );
