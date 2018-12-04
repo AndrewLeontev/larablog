@@ -33,6 +33,10 @@ Route::get('/login', 'SessionsController@create')->name('login');
 Route::post('/login', 'SessionsController@store');
 
 Route::get('/logout', 'SessionsController@destroy');
+
+Route::get('/user/edit/{name}', 'SessionsController@edit');
+Route::patch('/users/{name}', 'SessionsController@update');
+
 Route::get('/users/{id}', 'SessionsController@show');
 Route::get('/home', 'SessionsController@home')->name('home');
 

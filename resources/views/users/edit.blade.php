@@ -1,0 +1,35 @@
+@extends ('layouts.master')
+
+@section ('content')
+<div class="col-md-9">
+
+    <div class="blog_left single_left post_show">
+        @if ($user == Auth::user())
+          <h1>Edit user</h1>
+          
+          <form method="POST" action="/users/{{ $user->name }}">
+              @csrf
+              {{ method_field('PATCH') }}
+    
+              @include ('layouts.errors')
+    
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name"  name="name" value="{{ $user->name }}">
+              </div>
+    
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email"  name="email" value="{{ $user->email }}">
+              </div>
+    
+    
+              <center><button type="submit" class="btn btn-primary">Update profile</button></center>
+            </form>
+          @else 
+            <h1>You don't have permissions</h1>
+          @endif
+    </div>
+</div>
+
+@endsection
