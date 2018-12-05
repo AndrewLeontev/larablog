@@ -3002,3 +3002,19 @@ ul.about_social {
 	color: white;
 	/* background: #40c0cb; */
 }
+
+.form-head {
+	margin-bottom: 25px;
+}
+
+.form__error {
+	color: red;
+	text-align: left;
+	font-size: 14px;
+	display: block;
+	margin-top: 3px;
+	display: none;
+}
+input:invalid:not(:placeholder-shown) + .form__error {
+	display: block;
+}

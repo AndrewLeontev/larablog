@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         // default administrator user, password - admin
         User::create([
             'name' => 'Admin', 
+            'nickname' => 'Admin', 
             'email' => 'admin@ex.com',
             'administrator' => true, 
             'password' => '$2y$10$sIIDD4jNaI8qfTlS.KocPe2/c5j6KeUDVjMigdhgBIKCAIdheeVlS'

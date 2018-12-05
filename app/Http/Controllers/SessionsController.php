@@ -56,12 +56,11 @@ class SessionsController extends Controller
         $pwd = request('password');
         
         if (Hash::check($pwd, $user->password)) {
-            //add logic here
-            
             $user->update($request->only('name', 'email'));
             session()->flash('message', 'User have been updated!');
             return redirect()->home();
         } else {
+            session()->flash('message', 'Wrong password!');
             return back()->withErrors([
                 'message' => 'Wrong password. Please check and try again.'
             ]);
@@ -75,9 +74,9 @@ class SessionsController extends Controller
         return view('users.home', compact('posts'));
     }
 
-    public function show($name)
+    public function show($nickname)
     {
-        $user = User::where('name', $name)->first();
+        $user = User::where('nickname', $nickname)->first();
         $posts = Post::latest()->where('user_id', $user->id)->get();
         
         return view('users.show', compact('user', 'posts'));

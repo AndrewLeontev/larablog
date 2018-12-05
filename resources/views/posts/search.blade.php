@@ -18,7 +18,7 @@
 
 
 		<hr>
-		@if (count($posts))
+		{{-- @if (count($posts))
 			@foreach ($posts as $post)
 				<div class="blog_left post_show post_index">
 
@@ -51,7 +51,8 @@
 						There are no posts yet
 					</h2>
 			</div>
-		@endif
+		@endif --}}
+		@include('layouts.post')
 
 				@include('layouts.pagination')
 	</div>  
