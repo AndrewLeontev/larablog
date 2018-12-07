@@ -12,6 +12,8 @@
 */
 use App\Post;
 
+
+
 Route::get('/', 'PostsController@index');
 Route::get('/posts/create', 'PostsController@create');
 Route::get('/posts/{post}', 'PostsController@show');
@@ -42,6 +44,17 @@ Route::get('/home', 'SessionsController@home')->name('home');
 
 Route::get('/register', 'RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
+
+/* 
+|--------------------------------------------------------------------------
+| Admin
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'role:admin'], function() {
+    Route::get('/admin', function() {
+        return 'Welcome Admin';
+    });
+});
 
 /* 
 |--------------------------------------------------------------------------

@@ -2,7 +2,10 @@
 @section ('content')
 
 <div class="col-md-9">
-    <h3>All posts by: {{ $user->nickname }}</h3>
+    <div class="user-head">
+        <h3>All posts by {{ $user->nickname }}</h3> 
+        <span stye="">Total: {{ count($user->posts()->get()) }}</span>
+    </div>
     @if (count($posts))
         @foreach ($posts as $post)
             <div class="blog_left post_show post_index">

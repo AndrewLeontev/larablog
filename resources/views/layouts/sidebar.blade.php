@@ -18,7 +18,9 @@
                   <a class="btn btn-info new-post" href="/home">My Posts</a>
                   <a class="btn btn-info new-post" href="/posts/create">Create new post</a>
                   <a class="btn btn-info new-post" href="/user/edit/{{ $user->name }}">Edit profile</a>
-                  <a class="btn btn-info new-post" href="#">Dashboard</a>
+                  @role('admin')
+                     <a class="btn btn-info new-post" href="/admin">Dashboard</a>
+                  @endrole()
                   <a class="btn btn-info new-post" href="/logout">Logout</a>
             </div>
          @else
