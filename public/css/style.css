@@ -3087,5 +3087,5 @@ input:invalid:not(:placeholder-shown) + .form__error {
 	max-width: 800px;
 }
 #users-table {
-	max-width: 600px;
+	max-width: 800px;
 }
