@@ -9,7 +9,7 @@
                 <th>Id</th>
                 <th>Owner</th>
                 <th>Title</th>
-                <th>Body</th>
+                <th style="max-width: 55px;">Body</th>
                 <th>Category</th>
                 <th>Created At</th>
                 <th>Updated At</th>
