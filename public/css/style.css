@@ -3082,3 +3082,10 @@ input:invalid:not(:placeholder-shown) + .form__error {
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
 }
+
+.dataTables_wrapper {
+	max-width: 800px;
+}
+#users-table {
+	max-width: 600px;
+}
