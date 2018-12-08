@@ -49,10 +49,10 @@ class AdminController extends Controller
                               return view('admin.tables.posts.category-post', compact('post'));
                           })
                           ->editColumn('body', function ($post) {
-                              return substr($post->body, 0, 200);
+                              return '<div style="max-width: 50px">' . substr($post->body, 0, 200) . '</div>';
                           })
                           ->addColumn('action', 'admin.tables.users-action')
-                          ->rawColumns(['title', 'action', 'user_id', 'category_id'])
+                          ->rawColumns(['title', 'action', 'user_id', 'category_id', 'body'])
                           ->make(true);
     }
 }
