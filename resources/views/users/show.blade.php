@@ -26,7 +26,9 @@
                         ))
                     !!}
                 </div>
-                <h3>Comments: <a href="/posts/{{ strtolower($post->id) }}#comments">{{ count($post->comments) }}</a></h3>
+                <h3 class="comment-info">Comments: <a href="/posts/{{ strtolower($post->id) }}#comments">{{ count($post->comments) }}</a></h3>
+					
+                @include ('post.tags')
             </div>
             <div id="dialogEffects" class="sally">
                 <div id="somedialog" class="dialog">

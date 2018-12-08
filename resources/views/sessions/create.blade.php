@@ -17,8 +17,10 @@
           <label for="password">Password:</label>
           <input type="password" class="form-control" id="password"  name="password">
         </div>
-  
-        <button type="submit" class="btn btn-primary">Sign In</button>
+        
+        <div class="info-session">New to site? <a href="/register">CREATE ACCOUNT</a></div>
+
+        <center><button type="submit" class="btn btn-primary">Sign In</button></center>
       </form>
 
 </div>

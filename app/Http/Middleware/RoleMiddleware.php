@@ -15,11 +15,17 @@ class RoleMiddleware
      */
     public function handle($request, Closure $next, $role, $permission = null)
     {
+        if (! auth()->check()) {
+            session()->flash('message', 'You don\'t have permissions for this action');
+            return redirect('/login');
+        }
         if (!$request->user()->hasRole($role)) {
-            abort(404);
+            session()->flash('message', 'You\'re dont have permissions for this');
+            return redirect('/home');
         }
         if($permission !== null && !$request->user()->can($permission)) {
-            abort(404);
+            session()->flash('message', 'You\'re dont have permissions for this');
+            return redirect('/home');
         }
         return $next($request);
     }

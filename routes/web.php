@@ -1,5 +1,7 @@
 <?php
 
+use App\Post;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,11 +12,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Post;
-
-
-
 Route::get('/', 'PostsController@index');
+Route::get('/posts', 'PostsController@index');
 Route::get('/posts/create', 'PostsController@create');
 Route::get('/posts/{post}', 'PostsController@show');
 Route::get('/posts/tags/{tag}', 'TagsController@index');
@@ -39,6 +38,7 @@ Route::get('/logout', 'SessionsController@destroy');
 Route::get('/user/edit/{name}', 'SessionsController@edit');
 Route::patch('/users/{name}', 'SessionsController@update');
 
+Route::get('/users', 'SessionsController@showall');
 Route::get('/users/{id}', 'SessionsController@show');
 Route::get('/home', 'SessionsController@home')->name('home');
 
@@ -50,10 +50,8 @@ Route::post('/register', 'RegistrationController@store');
 | Admin
 |--------------------------------------------------------------------------
 */
-Route::group(['middleware' => 'role:admin'], function() {
-    Route::get('/admin', function() {
-        return 'Welcome Admin';
-    });
+Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function() {
+    Route::get('/', 'AdminController@index');
 });
 
 /* 
@@ -61,11 +59,6 @@ Route::group(['middleware' => 'role:admin'], function() {
 | Categories
 |--------------------------------------------------------------------------
 */
-// Route::get('/categories/{category}', function($category) {
-//     $posts = Post::latest()->where('category_id', 'LIKE', '%'. $category .'%')->paginate(10);
-
-//     return view('posts.index', compact('posts'));
-// });
 Route::get('/categories/{category}', 'CategoriesController@index');
 
 /* 
@@ -79,3 +72,9 @@ Route::get('/about', function () {
 Route::get('/contacts', function () {
     return view('static.contacts');
 });
+
+/* 
+|--------------------------------------------------------------------------
+| Others
+|--------------------------------------------------------------------------
+*/

@@ -28,7 +28,7 @@ class PermissionsServiceProvider extends ServiceProvider
         }
 
         Blade::directive('role', function ($role){
-            return "<?php if(auth()->check()) { ?>";
+            return "<?php if(auth()->check() && Auth::user()->hasRole({$role})) {?>";
         });
         Blade::directive('endrole', function ($role){
             return "<?php } ?>";

@@ -18,7 +18,7 @@
         <div class="post_content post-body">
             {!! 
                 str_replace('<img', '<img class="img-responsive" style="max-width: 100%"', Markdown::convertToHtml(
-                    substr(e($post->body), 0, 250)
+                    e($post->body)
                 ))
             !!}
         </div>

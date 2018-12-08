@@ -17,6 +17,9 @@ class SessionsController extends Controller
 
     public function create()
     {
+        if (auth()->check()) {
+            redirect ('/home');
+        }
         return view('sessions.create');
     }
 

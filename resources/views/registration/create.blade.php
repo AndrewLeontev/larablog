@@ -60,6 +60,8 @@
             <input type="password" class="form-control" id="password_confirmation"  name="password_confirmation"  placeholder="password">
         </div>
       </div>
+
+      <div class="info-session">ALREADY HAVE AN ACCOUNT? <a href="/register">Login</a></div>
       
       <center><button type="submit" class="btn btn-primary">Register</button></center>
     </form>

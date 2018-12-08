@@ -11,7 +11,7 @@ class CategoriesController extends Controller
     //
     public function index(Category $category)
     {
-        $posts = $category->posts()->where('category_id', $category->id)->paginate(10);
+        $posts = $category->posts()->latest()->where('category_id', $category->id)->paginate(10);
 
         return view('posts.index', compact('posts'));
     }
