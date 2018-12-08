@@ -52,6 +52,10 @@ Route::post('/register', 'RegistrationController@store');
 */
 Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function() {
     Route::get('/', 'AdminController@index');
+    Route::get('users', 'AdminController@showUsers');
+    Route::get('posts', 'AdminController@showPosts');
+    Route::get('users/data', 'AdminController@getUsersData');
+    Route::get('posts/data', 'AdminController@getPostsData');
 });
 
 /* 

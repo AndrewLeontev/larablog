@@ -12,7 +12,7 @@ class TagsController extends Controller
     public function index(Tag $tag)
     {
         // $posts = $tag->posts;
-        $posts = $tag->posts()->where('tag_id', $tag->id)->paginate(10);
+        $posts = $tag->posts()->latest()->where('tag_id', $tag->id)->paginate(10);
 
         return view('posts.index', compact('posts'));
     }

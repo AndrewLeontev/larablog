@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Permissions\HasPermissionsTrait;
+use Yajra\Datatables\Datatables;
+
 
 class User extends Authenticatable
 {
@@ -43,5 +45,17 @@ class User extends Authenticatable
     public function getRouteKeyName()
     {
         return 'nickname';
+    }
+
+
+    public static function getUsersData(Datatables $datatables) 
+    {
+        return $datatables->eloquent(User::query())
+                          ->editColumn('name', function ($user) {
+                              return '<a>' . $user->name . '</a>';
+                          })
+                          ->addColumn('action', 'eloquent.tables.users-action')
+                          ->rawColumns(['name', 'action'])
+                          ->make(true);
     }
 }

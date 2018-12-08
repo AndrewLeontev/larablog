@@ -1,0 +1,1 @@
+<a href="/posts/{{ $post->user->nickname }}">{{ $post->user->nickname }}</a>

@@ -1,0 +1,1 @@
+<a href="/posts/{{ $post->category->name }}">{{ $post->category->name }}</a>
