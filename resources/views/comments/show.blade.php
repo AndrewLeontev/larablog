@@ -2,10 +2,19 @@
 @if (count($post->comments))
   @foreach($post->comments as $comment)
     <div class="comment row">
-        <img src="/images/blog_s4.png" class="img-responsive col-sm-2 avatar" alt="" style="max-width: 100px; max-height: 100px; display: inline-block">
-        <a href="/users/{{ $comment->name }}"><h3 class="col-sm-10" style="display: inline-block">{{ $comment->name }}</h3></a>
-        <p class="comment-time col-sm-2" >{{ $comment->created_at->diffForHumans() }}</p>
-        <p class="comment-body col-sm-12">{{ $comment->body }}</p>
+        <div class="avatar-com col-sm-2">
+            <img class="img-responsive" 
+                    style="display:inline-block" 
+                    src="/uploads/avatars/{{ $comment->user->avatar }}" 
+                    alt="avatar">
+        </div>
+        <div class="comment-name col-sm-8"> 
+          <a href="/users/{{ $comment->name }}">
+            <h3 style="display: inline-block">{{ $comment->name }}</h3>
+          </a>
+          <p class="comment-time" >{{ $comment->created_at->diffForHumans() }}</p>
+        </div>
+        <p class="comment-body col-sm-10">{{ $comment->body }}</p>
     </div>
   @endforeach
 @else

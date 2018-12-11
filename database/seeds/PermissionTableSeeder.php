@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Role;
+use App\Permission;
 
 class PermissionTableSeeder extends Seeder
 {
@@ -12,8 +14,8 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         //
-        $dev_role = Role::where('slug','developer')->first();
-        $manager_role = Role::where('slug', 'manager')->first();
+        $dev_role = Role::where('slug','admin')->first();
+        $user_role = Role::where('slug', 'registered')->first();
 
         $createTasks = new Permission();
         $createTasks->slug = 'create-tasks';
@@ -25,6 +27,6 @@ class PermissionTableSeeder extends Seeder
         $editUsers->slug = 'edit-users';
         $editUsers->name = 'Edit Users';
         $editUsers->save();
-        $editUsers->roles()->attach($manager_role);
+        $editUsers->roles()->attach($user_role);
     }
 }

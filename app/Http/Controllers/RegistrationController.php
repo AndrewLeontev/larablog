@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use App\Role;
 use App\Mail\Welcome;
 use App\Http\Requests\RegistrationRequest;
 
@@ -35,6 +36,8 @@ class RegistrationController extends Controller
         ]);
 
         // Sign them in
+        $user_role = Role::where('slug', 'registered')->first();
+        $user->roles()->attach($user_role);
         auth()->login($user);
 
         \Mail::to($user)->send(new Welcome($user));

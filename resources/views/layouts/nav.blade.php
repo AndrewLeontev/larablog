@@ -18,7 +18,7 @@
           <div class="avatar">
             <img class="img-responsive" 
                     style="display:inline-block" 
-                    src="/uploads/avatars/{{ Auth::user()->first()->avatar }}" 
+                    src="/uploads/avatars/{{ Auth::user()->avatar }}" 
                     alt="avatar">
           </div>
         </a>

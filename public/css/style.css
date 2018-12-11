@@ -2796,8 +2796,8 @@ ul.about_social {
 }
 
 .comment {
-	max-width: 98%;
-	padding: 15px;
+	max-width: 100%;
+	padding: 15px 0;
 	margin: 15px;
 	box-shadow: 0 10px 10px rgba(0,0,0,0.22);
 	margin-bottom: 10px;
@@ -2812,8 +2812,14 @@ ul.about_social {
 	color: rgb(184, 179, 179);
 }
 .comment-body {
-	padding: 15px;
-	padding-left: 15%;
+	/* border-top: 1px solid rgba(206, 200, 200, 0.4); */
+	/* border-width: 80%; */
+	padding: 10px 15px;
+}
+.comment-name {
+	margin: 0px 0px 0px 0px;
+	display: inline-block;
+	/* box-shadow: 1.6px 1.3px 0px rgba(0,0,0,0.22); */
 }
 
 .post_show {
@@ -2992,6 +2998,19 @@ ul.about_social {
 		box-shadow: 0 0 7px #666; /* Параметры тени */
 		margin: 0px 50px 0px 0px;
 	}
+	.avatar-com {
+		float: left;
+		max-width: 100px;
+		max-height: 100px;	
+	}
+	.avatar-com img {
+		width: 75px;
+		height: 75px;
+		border-radius: 100px; /* Радиус скругления */
+		box-shadow: 0 0 7px #666; /* Параметры тени */
+		margin: 0px 50px 0px 0px;
+	}
+
 
 	.avatar-submit {
 		margin: 15px 0;
