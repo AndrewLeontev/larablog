@@ -204,7 +204,7 @@ body a{
 }
 .menu li a:hover ,.menu li.active a{
    color:#fff;
-   background:#8fbe00 !important;
+   /* background:#8fbe00 !important; */
    -webkit-transform: rotateY(30deg);
 	-moz-transform: rotateY(30deg);
 	-ms-transform: rotateY(30deg);
@@ -2966,9 +2966,45 @@ ul.about_social {
 	margin-bottom: 15px;
 }
 	.avatar {
-		max-width: 255px;
-		max-height: 357px;
+		max-width: 50px;
+		max-height: 50px;
+		vertical-align: middle;
+		display: inline-block;
+
+	}
+	.avatar img {
+		width: 50px;
+		height: 50px;
+		display: inline-block;
 		border-radius: 50%;
+		border-radius: 100px; /* Радиус скругления */
+		box-shadow: 0 0 7px #666; /* Параметры тени */
+	}
+	.avatar-profile {
+		float: left;
+		max-width: 150px;
+		max-height: 150px;	
+	}
+	.avatar-profile img {
+		width: 150px;
+		height: 150px;
+		border-radius: 100px; /* Радиус скругления */
+		box-shadow: 0 0 7px #666; /* Параметры тени */
+		margin: 0px 50px 0px 0px;
+	}
+
+	.avatar-submit {
+		margin: 15px 0;
+		background-color: DodgerBlue;
+		border: none;
+		color: white;
+		padding: 12px 30px;
+		cursor: pointer;
+		font-size: 20px;
+	}
+
+	.avatar-submit:hover {
+		background-color: RoyalBlue;
 	}
 
 	.new-post {
@@ -3089,3 +3125,43 @@ input:invalid:not(:placeholder-shown) + .form__error {
 #users-table {
 	max-width: 800px;
 }
+
+
+
+
+  .topmenu li a:hover {color: #D5B45B;}
+  .submenu-link:after {
+	color: inherit;
+  }
+  .submenu {
+	  padding: 5px;
+	background: #e8eaec;
+	  position: absolute;
+	  left: 0px;
+	  top: 100%;
+	  z-index: 5;
+	  width: 250px;
+	opacity: 0;
+	  transform: scaleX(0);
+	  transform: scaleY(0);
+	  transform-origin: 0 0;
+	transition: .5s ease-in-out;
+  }
+  .submenu a {
+	color: white;
+	  text-align: left;
+	  margin: 10px 0px;
+	  padding: 0px 0px;
+	  font-size: 13px;
+	  border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .submenu a i {
+	  margin: 0px -20px;
+	  padding: 0px 20px;
+  }
+  .submenu li:last-child a {border-bottom: none;}
+  .topmenu > li:hover .submenu {
+	opacity: 0.9;
+	  transform: scaleX(-1);
+	  transform: scaleY(1);
+  }

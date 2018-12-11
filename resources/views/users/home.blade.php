@@ -19,12 +19,14 @@
                                     </div>
                             </div>
                             {{-- <div><p>{{ substr($post->body, 0, 250) }}</p></div> --}}
-        					<div class="post_content post-body">
-                                {!! 
-                                    str_replace('<img', '<img class="img-responsive" style="max-width: 100%"', Markdown::convertToHtml(
-                                        substr(e($post->body), 0, 250)
-                                    ))
-                                !!}
+                            <div id="post-prev">
+                                <div class="post-body">
+                                    {!! 
+                                        str_replace('<img', '<img class="img-responsive" style="max-width: 100%"', Markdown::convertToHtml(
+                                            e($post->body)
+                                        ))
+                                    !!}
+                                </div>
                             </div>
 
                             <h3>Comments: <a href="/posts/{{ strtolower($post->id) }}#comments">{{ count($post->comments) }}</a></h3>

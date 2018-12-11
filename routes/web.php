@@ -33,6 +33,8 @@ Route::patch('/posts/{id}', 'PostsController@update');
 Route::get('/login', 'SessionsController@create')->name('login');
 Route::post('/login', 'SessionsController@store');
 
+Route::get('/profile', 'SessionsController@profile');
+Route::patch('/profile', 'SessionsController@update_avatar');
 Route::get('/logout', 'SessionsController@destroy');
 
 Route::get('/user/edit/{name}', 'SessionsController@edit');

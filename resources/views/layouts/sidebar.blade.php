@@ -12,17 +12,7 @@
      ?>
       <div class="user-sidebar">
          @if (Auth::check())
-            <h3>Logged in as {{ $user->name }} <br> Posts: <a href="/home">{{ count($user->posts()->get()) }}</a></h3>
-            <img class="img-responsive avatar" src="/images/blog_s4.png" alt="avatar">
-            <div class="btn-side">
-                  <a class="btn btn-info new-post" href="/home">My Posts</a>
-                  <a class="btn btn-info new-post" href="/posts/create">Create new post</a>
-                  <a class="btn btn-info new-post" href="/user/edit/{{ $user->name }}">Edit profile</a>
-                  @role('admin')
-                     <a class="btn btn-info new-post" href="/admin">Dashboard</a>
-                  @endrole()
-                  <a class="btn btn-info new-post" href="/logout">Logout</a>
-            </div>
+
          @else
          <a class="btn btn-info new-post" href="/login">Login</a>
          <a class="btn btn-info new-post" href="/register">Register</a>

@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use Hash;
+use Image;
+use Auth;
+use File;
 
 class SessionsController extends Controller
 {
     //
     public function __construct()
     {
-        $this->middleware('guest')->except(['destroy', 'home', 'show', 'edit', 'update']);
+        $this->middleware('guest')->except(['destroy', 'home', 'show', 'edit', 'update', 'profile', 'update_avatar']);
     }
 
     public function create()
@@ -90,5 +93,36 @@ class SessionsController extends Controller
         auth()->logout();
         session()->flash('message', 'Session closed. Goodbye!');
         return redirect('/');
+    }
+
+    public function profile()
+    {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
+        return view('users.profile', array('user' => auth()->user()));
+    }
+
+    public function update_avatar(Request $request)
+    {
+        // Handle the user upload of avatar
+    	if($request->hasFile('avatar')){
+    		$user = Auth::user();
+            
+    		$avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            $path = '/uploads/avatars/' . $user->nickname . '/';
+            
+            if (!File::exists(public_path($path))) {
+                File::makeDirectory(public_path($path), $mode = 0777, true, true);
+            }
+
+    		Image::make($avatar)->save( public_path($path . $filename ) );
+
+    		$user->avatar = $user->nickname . '/' . $filename;
+    		$user->save();
+    	}
+
+    	return view('users.profile', array('user' => Auth::user()) );
     }
 }
