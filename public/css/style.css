@@ -3213,3 +3213,8 @@ input:invalid:not(:placeholder-shown) + .form__error {
 		max-width: 100%;
 		margin: auto;
 	}
+
+.CodeMirror, .CodeMirror-scrol {
+	overflow-y: scroll;
+	height: 350px;
+}
