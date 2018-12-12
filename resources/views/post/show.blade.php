@@ -23,7 +23,7 @@
             
 
 
-            <div class="post_content  col-sm-9 post-body" style="padding: 20px 20px;">
+            <div class="post_content  col-sm-12 post-body" style="padding: 20px 20px;">
                 {!! 
                     str_replace('<img', '<img class="img-responsive" style="max-width: 100%"', Markdown::convertToHtml(
                         e($post->body)
