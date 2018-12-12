@@ -4,7 +4,7 @@
 <div class="col-md-9">
 
     <h1>Create a Post</h1>
-      <form method="POST" action="/posts">
+      <form method="POST" enctype="multipart/form-data" action="/posts">
           @csrf
 
           @include ('layouts.errors')
@@ -31,6 +31,13 @@
           <div class="form-group">
               <label for="tags">Tags</label>
               <input type="text" class="form-control" id="tags"  name="tags">
+          </div>
+
+          <div class="form-group">
+            <label for="post_image">Post image</label>
+            {{-- <input type="file" class="form-control" id="post_image"  name="post_image"> --}}
+          <input type="file" id="post_image" name="post_image">
+
           </div>
 
           <center><button type="submit" class="btn btn-primary">Post</button></center>

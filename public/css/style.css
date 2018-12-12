@@ -245,7 +245,7 @@ body a{
 	     width:95%;
 		 position: absolute;
 		 right:10px;
-		 background:#051619;
+		 background:#9fa4a5;
 		 top:86px;
 		 z-index: 9999;
 		 border:1px solid #C5C5C5;
@@ -3154,17 +3154,22 @@ input:invalid:not(:placeholder-shown) + .form__error {
   }
   .submenu {
 	  padding: 5px;
+	  border-radius: 2%;
 	background: #e8eaec;
 	  position: absolute;
-	  left: 0px;
+	  /* left: -50px; */
+	  right: 0px;
 	  top: 100%;
 	  z-index: 5;
-	  width: 250px;
-	opacity: 0;
+	  width: 300px;
+	opacity: 1;
 	  transform: scaleX(0);
 	  transform: scaleY(0);
 	  transform-origin: 0 0;
 	transition: .5s ease-in-out;
+  }
+  .submenu li {
+	  width: 100%;
   }
   .submenu a {
 	color: white;
@@ -3180,7 +3185,31 @@ input:invalid:not(:placeholder-shown) + .form__error {
   }
   .submenu li:last-child a {border-bottom: none;}
   .topmenu > li:hover .submenu {
-	opacity: 0.9;
+	opacity: 1;
 	  transform: scaleX(-1);
 	  transform: scaleY(1);
   }
+
+#subm {
+	margin: 0 auto;
+	display: block;
+	padding: 0 10px;
+}
+#subm a{
+	background: inherit;
+	font-size: 16px;
+	display: inline;
+	line-height: 1.6px;
+}
+
+.deactive {
+	display: none;
+}
+
+.post-poster {
+	margin: 10px 5px;
+}
+	.post-poster img {
+		max-width: 100%;
+		margin: auto;
+	}

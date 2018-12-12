@@ -7,19 +7,6 @@
        </form>
      </div>
 
-     <?php
-      $user = Auth::user();
-     ?>
-      <div class="user-sidebar">
-         @if (Auth::check())
-
-         @else
-         <a class="btn btn-info new-post" href="/login">Login</a>
-         <a class="btn btn-info new-post" href="/register">Register</a>
-         {{-- <img src="/images/2.jpg" class="img-responsive" alt=""/> --}}
-         @endif
-      </div>
-      <div class="clearfix"> </div>
 
      <ul class="blog-list">
         <h3>Categories</h3>

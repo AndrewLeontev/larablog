@@ -11,6 +11,9 @@ use App\Tag;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use App\Repositories\Posts;
 use Carbon\Carbon;
+use Image;
+use Auth;
+use File;
 
 class PostsController extends Controller
 {
@@ -32,9 +35,9 @@ class PostsController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    public function show($id)
+    public function show($slug)
     {   
-        $post = Post::find($id);
+        $post = Post::where('slug', $slug)->first();
 
         return view('post.show', compact('post'));
     }
@@ -59,7 +62,7 @@ class PostsController extends Controller
         return view('posts.create', compact('categories'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
         App::setLocale('ru');
         $this->validate(request(), [
@@ -71,10 +74,29 @@ class PostsController extends Controller
             new Post(
                 [
                     'title' => request('title'),
+                    'slug' => str_replace(" ", "_", request('title')),
                     'body' => request('body'),
                     'category_id' => request('category_id'),
                 ]) 
         );
+
+        // dd($request->hasFile('post_image'));
+    	if($request->hasFile('post_image')){
+    		$post = Post::where('title', request('title'))->first();
+            
+    		$post_img = $request->file('post_image');
+            $filename = time() . '.' . $post_img->getClientOriginalExtension();
+            $path = '/uploads/posts/' . $post->slug . '/';
+            
+            if (!File::exists(public_path($path))) {
+                File::makeDirectory(public_path($path), $mode = 0777, true, true);
+            }
+
+    		Image::make($post_img)->save( public_path($path . $filename ) );
+
+    		$post->post_image = $post->slug . '/' . $filename;
+    		$post->save();
+    	}
 
         preg_match_all('/[^\W\d][\w]*/', request('tags'), $newTags);
         $post = Post::where('title', request(['title']))->first();

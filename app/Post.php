@@ -8,7 +8,8 @@ use Carbon\Carbon;
 class Post extends Model
 {
     //
-    protected $fillable = ['title', 'body', 'category_id', 'user_id'];
+    // protected $fillable = ['title', 'body', 'category_id', 'user_id', 'slug'];
+    protected $guarded = [];
 
     public function comments()
     {
@@ -59,5 +60,10 @@ class Post extends Model
     public static function latestPosts()
     {
         return static::latest()->take(3)->get();
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

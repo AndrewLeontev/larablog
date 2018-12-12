@@ -26,10 +26,10 @@ class SessionsController extends Controller
         return view('sessions.create');
     }
 
-    public function edit($name)
+    public function edit($nickname)
     {
-        $user = User::where('name', $name)->first();
-        if ($user->id != auth()->user()->id) {
+        $user = User::where('nickname', $nickname)->first();
+        if (!Auth::check() && $user->id != Auth::id()) {
             session()->flash('message', 'You don\'t have permission!');
             return redirect ('/home');
         };

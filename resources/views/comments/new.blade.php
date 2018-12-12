@@ -1,6 +1,6 @@
 <div class="single_contact">
   <h3>Leave Reply</h3>
-  <form method="POST" action="/posts/{{ $post->id }}/comments">
+  <form method="POST" action="/posts/{{ $post->slug }}/comments">
       {{ csrf_field() }}
 
       @include ('layouts.errors')
