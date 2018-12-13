@@ -3218,3 +3218,22 @@ input:invalid:not(:placeholder-shown) + .form__error {
 	overflow-y: scroll;
 	height: 350px;
 }
+
+.users {
+	margin-top: 25px;
+}
+
+#users-table tbody tr td img {
+	width: 50px;
+}
+.users tbody tr td {
+	padding: 5px;
+}
+
+#users-table tr td,#users-table thead tr th {
+	text-align: center;
+	vertical-align: 50%;
+}
+.users tr td a {
+	color: blue;
+}

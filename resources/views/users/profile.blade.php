@@ -7,7 +7,7 @@
                 <div class="avatar-profile">
                         <img src="/uploads/avatars/{{ $user->avatar }}" class="img-fluid">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-5" style="padding: 10px 20px;">
                         <h2>{{ $user->name }}'s Profile</h2>
                         <form enctype="multipart/form-data" action="/profile" method="POST">
                               {{ method_field('PATCH') }}
@@ -17,6 +17,10 @@
                             <input type="file" name="avatar">
                             <button type="submit" class="avatar-submit"><i class="fa fa-upload"></i> Upload</button>
                         </form>
+                </div>
+                <div class="col-md-4">
+                       <h3>Total posts: {{ count($user->posts) }}</h3>
+                       <h3>Total comments: {{ count($user->comments) }}</h3>
                 </div>
             </div>
         </div>

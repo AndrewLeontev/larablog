@@ -31,14 +31,15 @@ class UserTableSeeder extends Seeder
         $developer->roles()->attach($user_role);
         $developer->permissions()->attach($dev_perm);
 
-
-        $user = new User();
-        $user->name = 'User';
-        $user->nickname = 'User';
-        $user->email = 'user@ex.com';
-        $user->password = bcrypt('secret');
-        $user->save();
-        $user->roles()->attach($user_role);
-        $user->permissions()->attach($user_perm);
+        for ($i = 0; $i < 10; $i++) {
+            $user = new User();
+            $user->name = 'User';
+            $user->nickname = 'User' . $i;
+            $user->email = 'user' . $i . '@ex.com';
+            $user->password = bcrypt('secret');
+            $user->save();
+            $user->roles()->attach($user_role);
+            $user->permissions()->attach($user_perm);
+        }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 use App\Post;
 use App\User;
 use Hash;
@@ -10,12 +11,23 @@ use Image;
 use Auth;
 use File;
 
+
 class SessionsController extends Controller
 {
     //
     public function __construct()
     {
-        $this->middleware('guest')->except(['destroy', 'home', 'show', 'edit', 'update', 'profile', 'update_avatar']);
+        $this->middleware('guest')->except([
+            'destroy', 
+            'home', 
+            'show', 
+            'edit', 
+            'update', 
+            'profile', 
+            'update_avatar',
+            'showAll',
+            'getUsersData'
+            ]);
     }
 
     public function create()
@@ -124,5 +136,31 @@ class SessionsController extends Controller
     	}
 
     	return view('users.profile', array('user' => Auth::user()) );
+    }
+ 
+    public function showAll() 
+    {
+        $users = User::orderBy('nickname', 'asc')->paginate(20);
+
+        return view('users.all', compact('users'));
+    }
+
+    public static function getUsersData(Datatables $datatables) 
+    {
+        return $datatables->eloquent(User::query())
+                          ->editColumn('avatar', function ($user) {
+                              return '<img src="uploads/avatars/' . $user->avatar . '" style="max-width: 50px;" class="image-responsive">';
+                          })
+                          ->editColumn('nickname', function ($user) {
+                              return '<a href="/users/' . $user->nickname . '">' . $user->nickname . '</a>';
+                          })
+                          ->editColumn('posts', function ($user) {
+                              return count($user->posts);
+                          })
+                          ->editColumn('created_at', function ($user) {
+                              return $user->created_at->toFormattedDateString();
+                          })
+                          ->rawColumns(['avatar', 'nickname', 'posts', 'created_at'])
+                          ->make(true);
     }
 }

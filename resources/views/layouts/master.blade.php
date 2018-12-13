@@ -30,6 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <!-- Custom Theme files -->
 <link href="/css/style.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
 <!-- Custom Theme files -->
 <!----start-top-nav-script---->
 		<script>
