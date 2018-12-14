@@ -42,9 +42,9 @@ class PostsController extends Controller
         return view('post.show', compact('post'));
     }
 
-    public function edit($id)
+    public function edit($slug)
     {   
-        $post = Post::find($id);
+        $post = Post::where('slug', $slug)->first();
         $categories = Category::all();
 
         if ($post->user()->first()->id != auth()->user()->id) {

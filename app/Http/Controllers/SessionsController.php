@@ -112,7 +112,7 @@ class SessionsController extends Controller
         if (!Auth::check()) {
             return redirect('login');
         }
-        return view('users.profile', array('user' => auth()->user()));
+        return view('users.profile', array('user' => auth()->user(), 'posts' => auth()->user()->posts));
     }
 
     public function update_avatar(Request $request)

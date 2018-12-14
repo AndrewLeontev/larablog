@@ -31,6 +31,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Custom Theme files -->
 <link href="/css/style.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 <!-- Custom Theme files -->
 <!----start-top-nav-script---->
 		<script>
@@ -79,6 +80,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<script  src="/js/modal.js"></script>
 	<script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="http://demos.creative-tim.com/fresh-bootstrap-table/assets/js/bootstrap-table.js"></script>
 	
 </body>
 </html>	

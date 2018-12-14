@@ -15,7 +15,7 @@
 									
 										@if (Auth::check() && Auth::user() == $post->user()->first())
 											<a id="btn-tooltip" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a>
-											<a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->id }}/edit"><i class="fas fa-edit"></i></a>
+											<a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
 										@endif
 									</div>
 							</div>
