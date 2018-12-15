@@ -168,9 +168,10 @@ body a{
 	color: #fff;
 }
 .header_top {
-	padding:2em 0 3em;
+	/* padding:2em 0 3em; */
 }
 .logo{
+	padding: 10px 0;
 	float:left;
 }
 .menu{
@@ -184,14 +185,14 @@ body a{
 }
 .menu li a{
   	display: block;
-	font-size: 1em;
+	font-size: 1.1em;
 	color: #999;
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 	text-transform: uppercase;
-	font-weight: 100;
+	font-weight: 400;
 	padding: 8px 15px 6px;
 }
 #nav .current a {
@@ -3286,3 +3287,32 @@ input:invalid:not(:placeholder-shown) + .form__error {
 #fresh-table tbody tr td a{
 	color: blue;
 }
+
+
+#upd-btn {
+	/* border-radius: 30px !important; */
+	max-width: 50%;
+    font-size: 1.25rem;
+    /* 20px */
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    /* overflow: hidden; */
+	padding: 0.625rem 1.25rem;
+	
+    border: 2px solid #d3394c;
+}
+
+#upd-btn:hover {
+	color: #722040;
+	border-color: #722040;
+}
+.update-photo input {
+	display: inline-block;
+}
+
+input[type='file'] {
+	opacity:0    
+  }

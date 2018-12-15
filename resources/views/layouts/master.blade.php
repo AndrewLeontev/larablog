@@ -32,6 +32,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="/css/style.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/css/demo.css">
+<link rel="stylesheet" type="text/css" href="/css/component.css">
 <!-- Custom Theme files -->
 <!----start-top-nav-script---->
 		<script>
@@ -73,14 +75,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		@include ('layouts.sidebar')
 	</div>
 </div>
+
+
 	@include ('layouts.footer')
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
 	<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
-	<script  src="/js/modal.js"></script>
+
 	<script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="http://demos.creative-tim.com/fresh-bootstrap-table/assets/js/bootstrap-table.js"></script>
-	
+	{{-- <script src="/js/jquery.custom-file-input.js"></script> --}}
+	<script src="/js/custom-file-input.js"></script>
+	<script  src="/js/modal.js"></script>
 </body>
 </html>	

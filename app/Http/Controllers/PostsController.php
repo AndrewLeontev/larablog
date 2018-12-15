@@ -26,11 +26,6 @@ class PostsController extends Controller
     public function index(Posts $posts) 
     {
         $posts = $posts->all();
-        // $posts = (new \App\Repositories\Posts)->all();
-
-        // $posts = Post::latest()
-        //     ->filter(request()->only(['month', 'year']))
-        //     ->paginate(10);
 
         return view('posts.index', compact('posts'));
     }
@@ -155,11 +150,11 @@ class PostsController extends Controller
         return view('posts.search', compact('posts', 'searchstr'));
     }
 
-    public function delete($postId)
+    public function delete($slug)
     {
-        $post = Post::find($postId);
-
-        if ($post->user()->first()->id != auth()->user()->id) {
+        
+        $post = Post::where('slug', $slug)->first();
+        if ($post->user->id != auth()->user()->id) {
             session()->flash('message', 'You don\'t have permission!');
             return back();
         };
@@ -168,6 +163,9 @@ class PostsController extends Controller
         $post->tags()->detach();
         $post->delete();
         session()->flash('message', 'Post has been deleted');
-        return redirect('/');
+        if (url()->previous() == App::make('url')->to('/profile')) {
+            return back();
+        }
+        return redirect('/home');
     }
 }

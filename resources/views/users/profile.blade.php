@@ -1,9 +1,6 @@
 @extends ('layouts.master')
 @section ('content')
 
-<link href="http://demos.creative-tim.com/fresh-bootstrap-table/assets/css/fresh-bootstrap-table.css" rel="stylesheet" />
-<script type="text/javascript" src="http://demos.creative-tim.com/fresh-bootstrap-table/assets/js/bootstrap-table.js"></script>
-
 
 <div class="col-md-9">
                 
@@ -12,7 +9,24 @@
                         <div class="avatar-profile">
                                 <img src="/uploads/avatars/{{ $user->avatar }}" class="img-fluide center-block">                
                         </div>
+
                 </div>
+                <div class="col-sm-12">
+                                <div class="center-block center-text">
+                                        <form enctype="multipart/form-data" action="/profile" method="POST">
+                                                {{ method_field('PATCH') }}
+                                                @csrf
+
+                                                <input type="file" name="avatar" id="avatar" class="inputfile inputfile-2">
+                                                <label for="avatar"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg> <span>Choose a file…</span></label>
+
+                                                <button id="upd-btn" type="submit"  class="inputfile inputfile-2"><i class="fa fa-upload"></i> Upload</button>
+
+                                                
+                                        </form>                               
+                                </div>
+        
+                        </div>
                 <div class="col-sm-12 marg">
                         <h1>{{ $user->nickname }}</h1>
                 </div>
@@ -37,113 +51,47 @@
                                 </div>
                         </div>
                 </div>
-                        <div class="col-sm-12" style="padding-top: 15px">
-                                <div class="fresh-table toolbar-color-blue">
-                                <div class="toolbar">
-                                        <button id="alertBtn" class="btn btn-default">All posts</button>
+
+                @if (count($posts))
+                <table id="fresh-table" class="table">
+                        <thead>
+                                <th data-field="id">Title</th>
+                                <th data-field="name">Created At</th>
+                                <th data-field="actions">Actions</th>
+                        </thead>
+                        <tbody>
+                                @foreach($posts as $post)
+                                <tr>
+
+                                        <td>{{ $post->title }}</td>
+                                        <td>{{ $post->created_at }}</td>
+                                        <td>
+                                                <a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
+                                                <a id="btn-tooltip" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a>
+
+                                        </td>
+                                </tr>
+                                
+                                @endforeach
+                        </tbody>
+                </table>
+                {{ $posts->links() }}
+                @role ('registered')
+                        <div id="dialogEffects" class="sally">
+                                <div id="somedialog" class="dialog">
+                                        <div class="dialog__overlay"></div>
+                                        <div class="dialog__content">
+                                                <h2><strong>Do you really want to delete this post?</h2>
+                                                <div><button class="action" ><a href="/posts/{{ $post->slug }}/delete">Yes</a></button>
+                                                <button class="action" data-dialog-close="">Close</button></div>
+                                        </div>
                                 </div>
-                                <table class="table"  id="fresh-table">
-                                        <thead>
-                                                {{-- <tr> --}}
-                                                <th data-field="title" data-sortable="true">Title</th>
-                                                <th data-field="created_at"  data-sortable="true">Created at</th>
-                                                <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Action</th>
-                                                {{-- </tr> --}}
-                                        </thead>
-                                        <tbody>
-                                                @foreach ($posts as $post)
-                                                        {{-- @include ('layouts.post'); --}}
-                                                        <tr>
-                                                                <td><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></td>
-                                                                <td>{{ $post->created_at->toFormattedDateString() }}</td>
-                                                                <td>
-                                                                        {{-- <a href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
-                                                                        <a href=""><i class="fas fa-trash-alt trigger"></i></a> --}}
-
-                                                                </td>
-                                                        </tr>
-                                                @endforeach
-                                        </tbody>
-                                </table>
                         </div>
+                @endrole
+                @endif
+                
 
-
-                </div>
-            
-            <div class="col-md-12">
-            </div>
         </div>
 </div>
 
-<script>
- var $table = $('#fresh-table'),
- full_screen = false;
- 
- $().ready(function(){
- $table.bootstrapTable({
- toolbar: ".toolbar",
- 
- showRefresh: true,
- search: true,
- showToggle: true,
- showColumns: false,
- pagination: true,
- striped: true,
- pageSize: 8,
- pageList: [8,10,25,50,100],
- 
- formatShowingRows: function(pageFrom, pageTo, totalRows){
-        //do nothing here, we don't want to show the text "showing x of y from..." 
-        },
-        formatRecordsPerPage: function(pageNumber){
-                return pageNumber + " rows visible";
-        },
-        icons: {
-                refresh: 'fas fa-sync-alt',
-                toggle: 'fa fa-th-list',
-                columns: 'fa fa-columns',
-                detailOpen: 'fa fa-plus-circle',
-                detailClose: 'fa fa-minus-circle'
-        }
- });
- 
- 
- 
- $(window).resize(function () {
- $table.bootstrapTable('resetView');
- });
- 
- 
- window.operateEvents = {
-        'click .like': function (e, value, row, index) {
-                alert('You click like icon, row: ' + JSON.stringify(row));
-                console.log(value, row, index);
-        },
-        'click .edit': function (e, value, row, index) {
-                alert('hello');
-        },
-        'click .remove': function (e, value, row, index) {
-                $table.bootstrapTable('remove', {
-                field: 'id',
-                values: [row.id]
-                });
-        }
- };
- 
- });
- 
- 
- function operateFormatter(value, row, index) {
- return [
- '<a rel="tooltip" title="Edit" class="table-action edit" href="/posts/{{ $post->slug }}/edit" title="Edit">',
- '<i class="fas fa-edit"></i>',
- '</a>',
- '<a rel="tooltip" title="Remove" class="table-action remove" href="javascript:void(0)" title="Remove">',
- '<i class="fas fa-trash-alt"></i>',
- '</a>'
- ].join('');
- }
- 
- 
- </script>
 @endsection

@@ -112,7 +112,7 @@ class SessionsController extends Controller
         if (!Auth::check()) {
             return redirect('login');
         }
-        return view('users.profile', array('user' => auth()->user(), 'posts' => auth()->user()->posts));
+        return view('users.profile', array('user' => auth()->user(), 'posts' => auth()->user()->posts()->paginate(10)));
     }
 
     public function update_avatar(Request $request)
@@ -135,7 +135,7 @@ class SessionsController extends Controller
     		$user->save();
     	}
 
-    	return view('users.profile', array('user' => Auth::user()) );
+    	return view('users.profile', array('user' => Auth::user(), 'posts' => Auth::user()->posts()->paginate(10)) );
     }
  
     public function showAll() 
