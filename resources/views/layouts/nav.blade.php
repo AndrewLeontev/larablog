@@ -65,7 +65,7 @@
         @endrole
         @if (!Auth::check())
           <li><a href="" class="submenu-link">
-              Login | Register <i id="icon" class="fas fa-arrow-down active"></i> 
+              Login | Register <i id="icon" class="fas fa-arrow-down "></i> 
           </a>
           <ul class="submenu login">
             <center><h2>Login</h2></center>

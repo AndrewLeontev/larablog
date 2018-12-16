@@ -7,9 +7,12 @@
 		@include('layouts.pagination')
 
 		@if (count($posts))
+		 <section class="posts-blocks">
+
 			@foreach ($posts as $post)
 				@include ('layouts.post')
 			@endforeach  
+		 </section>
 			@role ('registered')
 			<div id="dialogEffects" class="sally">
 					<div id="somedialog" class="dialog">

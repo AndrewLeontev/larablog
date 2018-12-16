@@ -87,7 +87,7 @@ class PostsController extends Controller
                 File::makeDirectory(public_path($path), $mode = 0777, true, true);
             }
 
-    		Image::make($post_img)->save( public_path($path . $filename ) );
+    		Image::make($post_img)->resize(375, 245)->save( public_path($path . $filename ) );
 
     		$post->post_image = $post->slug . '/' . $filename;
     		$post->save();

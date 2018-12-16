@@ -35,6 +35,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" type="text/css" href="/css/demo.css">
 <link rel="stylesheet" type="text/css" href="/css/component.css">
 <!-- Custom Theme files -->
+<link rel="stylesheet" type="text/css" href="/css/markup.css">
+<link rel="stylesheet" type="text/css" href="/css/responsive.css">
+{{-- <link rel="stylesheet" href="/css/animate.css"> --}}
+<link rel="stylesheet" href="/css/colors.css">
 <!----start-top-nav-script---->
 		<script>
 			$(function() {
@@ -88,5 +92,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	{{-- <script src="/js/jquery.custom-file-input.js"></script> --}}
 	<script src="/js/custom-file-input.js"></script>
 	<script  src="/js/modal.js"></script>
+	<script src="/js/plugins.js"></script>
 </body>
 </html>	
