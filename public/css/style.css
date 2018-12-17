@@ -3319,3 +3319,9 @@ input[type='file'] {
 article p {
 	font-size: 14px;
 }
+
+#no-effects {
+	transform: rotate(0deg) scale(1);
+	-ms-transform: rotate(0deg) scale(1);
+	-webkit-transform: rotate(0deg) scale(1);
+}

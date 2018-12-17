@@ -43,15 +43,21 @@
                     <div class="img-holder">
                         <img style="max-width: 720px; max-height: 435px;" src="/uploads/posts/{{ $post->post_image }}" alt="post image">
                     </div>
-					<time datetime=""><a href="/categories/{{ $post->category->name }}">{{ $post->created_at->format(' jS  F ') }} - {{ $post->category->name }}</a></time>
+                    
+                    {{-- <time datetime=""><a style="height: 39px; padding-top: 15px;" href="/categories/{{ $post->category->name }}">{{ $post->created_at->format(' jS  F ') }} - {{ $post->category->name }}</a>
+                    </time>
+                    @if (Auth::check() && Auth::user() == $post->user()->first())
+                        <time><a id="btn-tooltip" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a></time>
+                            
+                        <time><a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a></time>
+                    @endif --}}
                     <h2>{{ $post->title }}</h2>
 
                     {!! 
-                        str_replace('<img', '<img class="img-responsive" style="max-width: 100%"', Markdown::convertToHtml(
+                        str_replace('<img', '<img class="img-responsive" id="no-effects" style="max-width: 100%"', Markdown::convertToHtml(
                             e($post->body)
                         ))
                     !!}
-                    <p style="width: 100%"></p>                    
                     <footer>
                         <strong class="text"><span class="icon ico-user"></span><a href="/users/{{ $post->user->nickname }}">{{ $post->user->nickname }}</a></strong>
                         <strong class="text comment-count"><span class="icon ico-comment"></span><a href="#comments">{{ count($post->comments)}} comments</a></strong>
@@ -60,6 +66,12 @@
                                 <a href="/posts/tags/{{ $tag->name }}">{{ $tag->name }},</a>
                             @endforeach
                         </strong>
+                        @if (Auth::check() && Auth::user() == $post->user()->first())
+                            <strong class="text" style="float:right">
+                                <a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
+                                <a id="btn-tooltip" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a>
+                            </strong>
+                        @endif
                     </footer>
                 </div>
             </div>

@@ -45,6 +45,7 @@
 						<a href="/posts/{{ $post->slug }}"><img src="/uploads/posts/{{ $post->post_image }}" alt="post image"></a>
 					</div>
 					<time datetime=""><a href="/categories/{{ $post->category->name }}">{{ $post->created_at->format(' jS  F ') }} - {{ $post->category->name }}</a></time>
+					
 					<h2><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h2>
 					<div id="post-prev" style="height: 175px;">
 						<div class="post-body">
@@ -54,6 +55,12 @@
 					<a href="/posts/{{ $post->slug }}" class="read-more">Read more</a>
 					<footer>
 						<strong class="text comment-count"><span style="volor: white;" class="icon ico-comment"></span><a href="/posts/{{ $post->slug }}#comments">{{ count($post->comments)}} comments</a></strong>
+						@if (Auth::check() && Auth::user() == $post->user()->first())
+                            <strong class="text" style="float:right">
+                                <a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
+                                <a id="btn-tooltip" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a>
+                            </strong>
+                        @endif
 					</footer>
 				</div>
 		</article>

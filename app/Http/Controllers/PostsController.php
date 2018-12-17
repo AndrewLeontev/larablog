@@ -86,6 +86,9 @@ class PostsController extends Controller
             if (!File::exists(public_path($path))) {
                 File::makeDirectory(public_path($path), $mode = 0777, true, true);
             }
+            if (!$post->post_image != 'default.png') {
+                File::delete(public_path('/uploads/posts/' .  $user->avatar));
+            }
 
     		Image::make($post_img)->resize(375, 245)->save( public_path($path . $filename ) );
 
@@ -133,6 +136,25 @@ class PostsController extends Controller
                 }
            }
         };
+
+        if($request->hasFile('post_image')){
+            
+    		$post_img = $request->file('post_image');
+            $filename = time() . '.' . $post_img->getClientOriginalExtension();
+            $path = '/uploads/posts/' . $post->slug . '/';
+            
+            if (!File::exists(public_path($path))) {
+                File::makeDirectory(public_path($path), $mode = 0777, true, true);
+            }
+            if (!$post->post_image != 'default.png') {
+                File::delete(public_path('/uploads/posts/' .  $post->post_image));
+            }
+
+    		Image::make($post_img)->resize(375, 245)->save( public_path($path . $filename ) );
+
+    		$post->post_image = $post->slug . '/' . $filename;
+    		$post->update();
+    	}
 
         session()->flash('message', 'Post have been updated!');
         return redirect('/');
