@@ -3,9 +3,8 @@
 /public/storage
 
 /public/uploads/avatars
-/public/uploads/posts
-
 !/public/uploads/avatars/default.png
+/public/uploads/posts
 !/public/uploads/posts/default.png
 
 /storage/*.key
