@@ -146,7 +146,8 @@ class PostsController extends Controller
             if (!File::exists(public_path($path))) {
                 File::makeDirectory(public_path($path), $mode = 0777, true, true);
             }
-            if (!$post->post_image != 'default.png') {
+            // dd($post->post_image != 'default.png');
+            if ($post->post_image != 'default.png') {
                 File::delete(public_path('/uploads/posts/' .  $post->post_image));
             }
 

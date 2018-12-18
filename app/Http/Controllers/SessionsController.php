@@ -128,7 +128,7 @@ class SessionsController extends Controller
             if (!File::exists(public_path($path))) {
                 File::makeDirectory(public_path($path), $mode = 0777, true, true);
             }
-            if (!$user->avatar != 'default.png') {
+            if ($user->avatar != 'default.png') {
                 File::delete(public_path('/uploads/avatars/' .  $user->avatar));
             }
 
