@@ -1,4 +1,6 @@
 <div class="col-md-3 sidebar">
+      <div class="clearfix"> </div>
+
       <div class="search">
        <form method="GET" action="/search">
           @csrf

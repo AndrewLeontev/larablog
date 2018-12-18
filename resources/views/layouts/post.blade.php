@@ -56,11 +56,11 @@
 					<footer>
 						<strong class="text comment-count"><span style="volor: white;" class="icon ico-comment"></span><a href="/posts/{{ $post->slug }}#comments">{{ count($post->comments)}} comments</a></strong>
 						@if (Auth::check() && Auth::user() == $post->user()->first())
-                            <strong class="text" style="float:right">
-                                <a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
-                                <a id="btn-tooltip" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a>
-                            </strong>
-                        @endif
+								<strong class="text" style="float:right">
+										<a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
+										<a id="btn-tooltip" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a>
+								</strong>
+						@endif
 					</footer>
 				</div>
 		</article>

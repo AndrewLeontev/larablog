@@ -1,4 +1,5 @@
 <!----start-header---->
+
 <div class="header">
   <div class="container">
     <div class="header_top">
@@ -14,14 +15,14 @@
         <li><a href="/contacts">Contacts</a></li>	
         @role('registered')
         <li><a href="/home" class="submenu-link">
-            {{ Auth::user()->nickname }} <i id="icon" class="fas fa-arrow-down"></i> 
-          <div class="avatar">
-            <img class="img-responsive" 
-                    style="display:inline-block" 
-                    src="/uploads/avatars/{{ Auth::user()->avatar }}" 
-                    alt="avatar">
-          </div>
-        </a>
+              {{ Auth::user()->nickname }} <i id="icon" class="fas fa-arrow-down"></i> 
+            <div class="avatar">
+              <img class="img-responsive" 
+                      style="display:inline-block" 
+                      src="/uploads/avatars/{{ Auth::user()->avatar }}" 
+                      alt="avatar">
+            </div>
+          </a>
           <ul class="submenu">
               <li>
                 <a href="/profile">
@@ -64,33 +65,35 @@
         </li>
         @endrole
         @if (!Auth::check())
-          <li><a href="" class="submenu-link">
+          <li>
+            <a href="" class="submenu-link">
               Login | Register <i id="icon" class="fas fa-arrow-down "></i> 
-          </a>
-          <ul class="submenu login">
-            <center><h2>Login</h2></center>
-            <form action="/login" method="post">
-              @csrf
-  
-              @include ('layouts.errors')
-              <li>
-              <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="text" class="form-control" id="email"  name="email">
-              </div>
-              </li>
-        
-              <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password"  name="password">
-              </div>
-                    
-              <center><button type="submit" class="btn btn-info new-post">Sign In</button></center>
-            </form>
-            <p id="subm">New to site? <a href="/register">CREATE ACCOUNT</a> </p>
+            </a>
+            <ul class="submenu login">
+              <center><h2 class="login-header">Login</h2></center>
+              <form action="/login" method="post">
+                @csrf
+    
+                @include ('layouts.errors')
+                <li>
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input autocomplete="off" type="text" class="form-control" id="email"  name="email">
+                </div>
+                </li>
+          
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input type="password" class="form-control" id="password"  name="password">
+                </div>
+                      
+                <button type="submit" class="loginbtn">Sign In</button>
+              </form>
+              <h2 class="login-bottom" id="subm">New to site? <a href="/register">CREATE ACCOUNT</a> </h2>
 
-          </ul>
-        </li>
+            </ul>
+          </li>
+
         @endif
         							
       </ul>
@@ -101,6 +104,8 @@
     </div>
   </div>
 </div>
+
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-<!----//End-header---->
+
+<!----//End-header----> 

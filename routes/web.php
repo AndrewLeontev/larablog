@@ -85,3 +85,4 @@ Route::get('/contacts', function () {
 | Others
 |--------------------------------------------------------------------------
 */
+Route::get('/404', ['as' => '404', 'uses' => 'ErrorsController@notFound']);
