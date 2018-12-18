@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 @section('content')
 
-<div class="col-md-9">
+<div class="col-md-9 col-sm-12">
 
     <table class="table table-bordered" id="users-table">
         <thead>

@@ -2,16 +2,18 @@
 
 @section ('content')
 
-	<div class="col-md-9">
+	<div class="col-md-9 col-sm-12">
 
-		@include('layouts.pagination')
 
 		@if (count($posts))
 		 <section class="posts-blocks">
-
-			@foreach ($posts as $post)
-				@include ('layouts.post')
-			@endforeach  
+			<div class="blog_left post_show post_index">
+				<div class="row">
+					@foreach ($posts as $post)
+						@include ('layouts.post')
+					@endforeach  
+				</div>
+			</div>
 			
 		 </section>
 

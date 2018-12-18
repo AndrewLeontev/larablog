@@ -39,6 +39,8 @@
 				
 			
  --}}
+ <script  src="/js/modal.js"></script>
+
 		<article class="post-block wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
 				<div class="post-holder">
 					<div class="img-holder">

@@ -2,14 +2,18 @@
 
 @section ('content')
 
-	<div class="col-md-9">
+	<div class="col-md-9 col-sm-12">
             @if (Auth::check())
                 <h3 class="myposts">My posts: </h3>
                 @if (count($posts))
 		            <section class="posts-blocks">
-                    @foreach ($posts as $post)
-                        @include ('layouts.post')
-                    @endforeach 
+                        <div class="blog_left post_show post_index">
+                            <div class="row">
+                                @foreach ($posts as $post)
+                                    @include ('layouts.post')
+                                @endforeach  
+                            </div>
+                        </div>
 		            </section>
                     @role ('registered')
                     <div id="dialogEffects" class="don">

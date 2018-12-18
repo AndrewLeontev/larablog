@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
 @section ('content')
-    <div class="col-md-9">
+    <div class="col-md-9  col-sm-12">
 
         <h1>All users: </h1>
         <table class="users table display responsive nowrap dataTable no-footer collapsed" id="users-table">

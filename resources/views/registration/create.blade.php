@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 @section ('content')
-<div class="col-md-9">
+<div class="col-md-9 col-sm-12">
 
   <center><h1 class="form-head">Create User</h1></center>
 
