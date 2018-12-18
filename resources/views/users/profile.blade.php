@@ -77,7 +77,7 @@
                 </table>
                 {{ $posts->links() }}
                 @role ('registered')
-                        <div id="dialogEffects" class="sally">
+                        <div id="dialogEffects" class="don">
                                 <div id="somedialog" class="dialog">
                                         <div class="dialog__overlay"></div>
                                         <div class="dialog__content">

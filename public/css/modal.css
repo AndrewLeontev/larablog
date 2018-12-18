@@ -1,11 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:200,600,700,400);
-body {
-  background: #cae4b6;
-  color: #c94e50;
-  font-weight: 400;
-  font-size: 1em;
-  font-family: 'Raleway', Arial, sans-serif;
-}
+
 
 a {
   color: #74716D;
@@ -97,6 +90,7 @@ button.trigger {
   height: 100%;
   top: 0;
   left: 0;
+  z-index: 55;
 }
 
 .dialog {
