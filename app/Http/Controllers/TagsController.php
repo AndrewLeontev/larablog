@@ -16,4 +16,11 @@ class TagsController extends Controller
 
         return view('posts.index', compact('posts'));
     }
+
+    public function all()
+    {
+        $tags = Tag::all();
+
+        return view('tags.all', compact('tags'));
+    }
 }

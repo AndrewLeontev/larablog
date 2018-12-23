@@ -21,7 +21,7 @@ Route::post('/posts', 'PostsController@store');
 Route::post('/posts/{post}/comments', 'CommentsController@store');
 Route::get('/search', 'PostsController@search');
 
-Route::get('/posts/{id}/delete', 'PostsController@delete');
+Route::get('/posts/{id}/delete', 'PostsController@destroy');
 Route::get('/posts/{id}/edit', 'PostsController@edit');
 Route::patch('/posts/{id}', 'PostsController@update');
 
@@ -79,6 +79,13 @@ Route::get('/about', function () {
 Route::get('/contacts', function () {
     return view('static.contacts');
 });
+
+/* 
+|--------------------------------------------------------------------------
+| Others
+|--------------------------------------------------------------------------
+*/
+Route::get('/tags/all', 'TagsController@all');
 
 /* 
 |--------------------------------------------------------------------------

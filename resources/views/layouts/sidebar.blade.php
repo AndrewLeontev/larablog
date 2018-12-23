@@ -38,5 +38,6 @@
             <li><a href="/posts/tags/{{ $tag }}">{{ $tag }}</a></li>
         @endforeach
      </ul>
+     <h4><a href="/tags/all">All tags...</a></h4>
    </div>
  <div class="clearfix"> </div>

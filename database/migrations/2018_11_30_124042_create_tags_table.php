@@ -16,12 +16,20 @@ class CreateTagsTable extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('count')->default(0);
             $table->timestamps();
         });
 
         Schema::create('post_tag', function (Blueprint $table) {
-            $table->integer('post_id');
-            $table->integer('tag_id');
+            
+            $table->integer('post_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
+
+            //Foreign key contraints
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+
+            //setting the primary keys
             $table->primary(['post_id', 'tag_id']);
         });
     }
@@ -34,5 +42,6 @@ class CreateTagsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tags');
+        Schema::dropIfExists('post_tag');
     }
 }

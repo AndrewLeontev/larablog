@@ -86,8 +86,8 @@ class PostsController extends Controller
             if (!File::exists(public_path($path))) {
                 File::makeDirectory(public_path($path), $mode = 0777, true, true);
             }
-            if (!$post->post_image != 'default.png') {
-                File::delete(public_path('/uploads/posts/' .  $user->avatar));
+            if ($post->post_image != 'default.png') {
+                File::delete(public_path('/uploads/posts/' .  $post->avatar));
             }
 
     		Image::make($post_img)->resize(375, 245)->save( public_path($path . $filename ) );
@@ -101,11 +101,15 @@ class PostsController extends Controller
         foreach ($newTags as $tagList) {
            foreach ($tagList as $tag) {
                 $dbTag = Tag::firstOrCreate(
-                    ['name' => $tag]
+                    [
+                        'name' => $tag
+                    ]
                 );
                 if (!$post->tags()->where('id', $dbTag->id)->first()) {
                     $post->tags()->attach([$dbTag->id]);
                 }
+                $dbTag['count'] += 1;
+                $dbTag->save();
            }
         };
 
@@ -173,10 +177,13 @@ class PostsController extends Controller
         return view('posts.search', compact('posts', 'searchstr'));
     }
 
-    public function delete($slug)
+    public function destroy($slug)
     {
+
         
         $post = Post::where('slug', $slug)->first();
+        $tags = $post->tags()->pluck('name');
+
         if ($post->user->id != auth()->user()->id) {
             session()->flash('message', 'You don\'t have permission!');
             return back();
@@ -186,8 +193,14 @@ class PostsController extends Controller
         $post->tags()->detach();
         $post->delete();
         session()->flash('message', 'Post has been deleted');
-        if (url()->previous() == App::make('url')->to('/profile')) {
+        if (url()->previous() == App::make('url')->to('/profile') || url()->previous() == App::make('url')->to('/admin/posts')) {
             return back();
+        }
+        foreach ($tags as $tagName) {
+           $tag = Tag::where('name', $tagName)->first();
+           if (count($tag->posts()->pluck('id')) == 0) {
+               $tag->delete();
+           }
         }
         return redirect('/home');
     }

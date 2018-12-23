@@ -20,9 +20,20 @@ class AdminController extends Controller
         return view('admin.data.users');
     }
 
+    public function showComments()
+    {
+        return view('admin.data.comments', ['comments' => App\Comments::all()]);
+    }
+
+    public function showTags()
+    {
+        return view('admin.data.tags', ['tags' => App\Tags::all()]);
+    }
+
     public function showPosts()
     {
-        return view('admin.data.posts');
+        $posts = Post::all();
+        return view('admin.data.posts', compact('posts'));
     }
 
     public static function getUsersData(Datatables $datatables) 
@@ -52,7 +63,11 @@ class AdminController extends Controller
                               return '<div style="max-width: 150px; overflow:hidden;
                               text-overflow: ellipsis;">' . substr($post->body, 0, 200) . '</div>';
                           })
-                          ->addColumn('action', 'admin.tables.users-action')
+                          ->addColumn('action', function($post) {
+                              return '<a href="/posts/' . $post->slug . '/edit"><i class="fas fa-edit"></i></a>
+                              <a href="/posts/' . $post->slug . '/delete"><i class="fas fa-trash-alt"></i></a>
+                              ';
+                          })
                           ->rawColumns(['title', 'action', 'user_id', 'category_id', 'body'])
                           ->make(true);
     }

@@ -57,12 +57,25 @@
 					<a href="/posts/{{ $post->slug }}" class="read-more">Read more</a>
 					<footer>
 						<strong class="text comment-count"><span style="volor: white;" class="icon ico-comment"></span><a href="/posts/{{ $post->slug }}#comments">{{ count($post->comments)}} comments</a></strong>
-						@if (Auth::check() && Auth::user() == $post->user()->first())
+						@role ('registered')
+							@if (Auth::user()->id == $post->user()->first()->id)
 								<strong class="text" style="float:right">
-										<a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
-										<a id="btn-tooltip" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a>
+									<a style="font-size:16px" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
+									<a style="font-size:16px" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a>
 								</strong>
-						@endif
+								
+								<div id="dialogEffects" class="don">
+									<div id="somedialog" class="dialog">
+										<div class="dialog__overlay"></div>
+										<div class="dialog__content">
+											<h2><strong>Do you really want to delete this post?</h2>
+											<div><a href="/posts/{{ $post->slug }}/delete"><button class="action" >Yes</button></a>
+											<button class="action" data-dialog-close="">Close</button></div>
+										</div>
+									</div>
+								</div>
+							@endif
+						@endrole
 					</footer>
 				</div>
 		</article>

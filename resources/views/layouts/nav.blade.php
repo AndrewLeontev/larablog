@@ -42,11 +42,6 @@
                 </a>
               </li>
               
-              <li>
-                <a href="/user/edit/{{ Auth::user()->nickname }}">
-                  <i class="fas fa-user-edit"></i> Edit profile <i id="sub" class="fas fa-arrow-left deactive"></i>
-                </a>
-              </li>
 
               @role('admin')
                 <li>

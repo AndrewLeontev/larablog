@@ -1,5 +1,0 @@
-
-$post = $user->posts()->find(3);
-$post->comments()->delete();
-$post->tags()->detach();
-$post->delete();

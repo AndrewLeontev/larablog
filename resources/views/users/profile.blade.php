@@ -34,6 +34,9 @@
                         <a href="/user/edit/{{ $user->nickname }}">
                                 <i class="fas fa-user-edit"></i> Edit profile
                         </a>
+                        <a href="/posts/create">
+                                <i class="fas fa-pencil-alt"></i> Create post
+                        </a>
                 </div>
                 
                 <div class="col-sm-12 center-block center-text tabs">
