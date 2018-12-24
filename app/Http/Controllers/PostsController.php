@@ -179,10 +179,7 @@ class PostsController extends Controller
 
     public function destroy($slug)
     {
-
-        
         $post = Post::where('slug', $slug)->first();
-        $tags = $post->tags()->pluck('name');
 
         if ($post->user->id != auth()->user()->id) {
             session()->flash('message', 'You don\'t have permission!');
@@ -192,16 +189,13 @@ class PostsController extends Controller
         $post->comments()->delete();
         $post->tags()->detach();
         $post->delete();
+        Tag::doesntHave('posts')->delete();
+        
         session()->flash('message', 'Post has been deleted');
         if (url()->previous() == App::make('url')->to('/profile') || url()->previous() == App::make('url')->to('/admin/posts')) {
             return back();
         }
-        foreach ($tags as $tagName) {
-           $tag = Tag::where('name', $tagName)->first();
-           if (count($tag->posts()->pluck('id')) == 0) {
-               $tag->delete();
-           }
-        }
+
         return redirect('/home');
     }
 }
