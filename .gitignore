@@ -13,11 +13,7 @@ yarn-error.log
 .env
 .phpunit.result.cache
 
-
-
 /public/uploads/avatars
 !/public/uploads/avatars/default.png
 /public/uploads/posts
 !/public/uploads/posts/default.png
-
-
