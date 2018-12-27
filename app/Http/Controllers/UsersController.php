@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Notifications\UserFollowed;
 use App\User;
 use Auth;
 
@@ -28,7 +29,7 @@ class UsersController extends Controller
         if(!$follower->isFollowing($user->nickname)) {
             $follower->follow($user->id);
 
-            // $user->notify(new UserFollowed($follower));
+            $user->notify(new UserFollowed($follower));
 
             return back()->withSuccess("You are now friends with {$user->nickname}");
         }
@@ -43,5 +44,10 @@ class UsersController extends Controller
             return back()->withSuccess("You are no longer friends with {$user->nickname}");
         }
         return back()->withErrors("You are not following {$user->nickname}");
+    }
+
+    public function notifications()
+    {
+        return auth()->user()->unreadNotifications()->limit(5)->get()->toArray();
     }
 }
