@@ -10,7 +10,7 @@
       <a class="toggleMenu" href="#"><img src="/images/nav_icon.png" alt="" /> </a>
       <ul class="nav topmenu" id="nav">
         <li><a href="/">Home</a></li>
-        <li><a href="/users">Users</a></li>
+        <li><a href="{{ route('users') }}">Users</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contacts">Contacts</a></li>	
         @role('registered')

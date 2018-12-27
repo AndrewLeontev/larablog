@@ -37,16 +37,24 @@ Route::get('/profile', 'SessionsController@profile');
 Route::patch('/profile', 'SessionsController@update_avatar');
 Route::get('/logout', 'SessionsController@destroy');
 
+Route::get('/users', 'UsersController@index')->name('users');
+Route::group(['middleware' => 'auth'], function() {
+    Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');
+    Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');
+    
+});
+
 Route::get('/user/edit/{name}', 'SessionsController@edit');
 Route::patch('/users/{name}', 'SessionsController@update');
 
-Route::get('/users', 'SessionsController@showAll');
+// Route::get('/users', 'SessionsController@showAll');
 Route::get('/users/all', 'SessionsController@getUsersData');
 Route::get('/users/{id}', 'SessionsController@show');
 Route::get('/home', 'SessionsController@home')->name('home');
 
 Route::get('/register', 'RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
+
 
 /* 
 |--------------------------------------------------------------------------
