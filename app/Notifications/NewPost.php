@@ -56,7 +56,7 @@ class NewPost extends Notification
         return [
             'following_id' => $this->following->id,
             'following_name' => $this->following->nickname,
-            'post_id' => $this->post->id,
+            'post_slug' => $this->post->slug,
         ];
     }
 
@@ -74,7 +74,7 @@ class NewPost extends Notification
             'data' => [
                 'following_id' => $this->following->id,
                 'following_name' => $this->following->name,
-                'post_id' => $this->post->id,
+                'post_slug' => $this->post->slug,
             ],
         ];
     }

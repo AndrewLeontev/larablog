@@ -17,12 +17,12 @@
         @role('registered')
         <li class="dropdown">
           <a class="dropdown-toggle" id="notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <span class="glyphicon glyphicon-user"></span>
+              <i style="font-size:20px;" class="far fa-bell"></i>
           </a>
           <ul class="dropdown-menu" aria-labelledby="notificationsMenu" id="notificationsMenu">
               <li class="dropdown-header">No notifications</li>
           </ul>
-        </li>
+      </li>
         <li><a href="/home" class="submenu-link">
               {{ Auth::user()->nickname }} <i id="icon" class="fas fa-arrow-down"></i> 
             <div class="avatar">
