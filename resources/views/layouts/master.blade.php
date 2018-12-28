@@ -9,7 +9,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
 <title>Blog System</title>
-<meta name="csrf-token" content="{{ csrf_token() }}">
+{{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Gelios Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
@@ -20,7 +20,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 <link rel="stylesheet" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/lodash/4.10.0/lodash.js"></script>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -104,5 +103,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="/js/custom-file-input.js"></script>
 	<script  src="/js/modal.js"></script>
 	<script src="/js/plugins.js"></script>
+	<script src="/js/app.js"></script>
 </body>
 </html>	

@@ -78,10 +78,16 @@ module.exports = __webpack_require__(8);
 "use strict";
 
 
+var _laravelEcho = __webpack_require__(7);
+
+var _laravelEcho2 = _interopRequireDefault(_laravelEcho);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 window._ = __webpack_require__(2);
 window.$ = window.jQuery = __webpack_require__(5);
 window.Pusher = __webpack_require__(6);
-var Echo = __webpack_require__(7);
+
 
 var PUSHER_KEY = '227bb60553d4fa6fefbe';
 
@@ -90,7 +96,7 @@ var NOTIFICATION_TYPES = {
     newPost: 'App\\Notifications\\NewPost'
 };
 
-window.Echo = new Echo({
+window.Echo = new _laravelEcho2.default({
     broadcaster: 'pusher',
     key: PUSHER_KEY,
     cluster: 'ap3',
@@ -114,12 +120,44 @@ $(document).ready(function () {
     }
 });
 
-// add new notifications
-function addNotifications(newNotifications, target) {
-    notifications = _.concat(notifications, newNotifications);
-    // show only last 5 notifications
-    notifications.slice(0, 5);
-    showNotifications(notifications, target);
+// get the notification text based on it's type
+function makeNotificationText(notification) {
+    var text = '';
+    if (notification.type === NOTIFICATION_TYPES.follow) {
+        var name = notification.data.follower_name;
+        text += '<strong>' + name + '</strong> followed you';
+    } else if (notification.type === NOTIFICATION_TYPES.newPost) {
+        var _name = notification.data.following_name;
+        text += '<strong>' + _name + '</strong> published a post';
+    }
+    return text;
+}
+
+// create a notification li element
+function makeNotification(notification) {
+    var to = routeNotification(notification);
+    var notificationText = makeNotificationText(notification);
+    return '<li><a href="' + to + '">' + notificationText + '</a></li>';
+}
+
+// get the notification route based on it's type
+function routeNotification(notification) {
+    var to = '?read=' + notification.id;
+    if (notification.type === NOTIFICATION_TYPES.follow) {
+        var userId = notification.data.follower_name;
+        to = 'users/' + userId + to;
+    } else if (notification.type === NOTIFICATION_TYPES.newPost) {
+        var postId = notification.data.post_slug;
+        to = 'posts/' + postId + to;
+    }
+    return '/' + to;
+}
+
+// create a notification li element
+function makeNotification(notification) {
+    var to = routeNotification(notification);
+    var notificationText = makeNotificationText(notification);
+    return '<li><a href="' + to + '">' + notificationText + '</a></li>';
 }
 
 // show notifications
@@ -136,36 +174,12 @@ function showNotifications(notifications, target) {
     }
 }
 
-// create a notification li element
-function makeNotification(notification) {
-    var to = routeNotification(notification);
-    var notificationText = makeNotificationText(notification);
-    return '<li><a href="' + to + '">' + notificationText + '</a></li>';
-}
-
-// get the notification route based on it's type
-function routeNotification(notification) {
-    var to = '?read=' + notification.id;
-    if (notification.type === NOTIFICATION_TYPES.follow) {
-        to = 'users' + to;
-    } else if (notification.type === NOTIFICATION_TYPES.newPost) {
-        var postId = notification.data.post_id;
-        to = 'posts/' + postId + to;
-    }
-    return '/' + to;
-}
-
-// get the notification text based on it's type
-function makeNotificationText(notification) {
-    var text = '';
-    if (notification.type === NOTIFICATION_TYPES.follow) {
-        var name = notification.data.follower_name;
-        text += '<strong>' + name + '</strong> followed you';
-    } else if (notification.type === NOTIFICATION_TYPES.newPost) {
-        var _name = notification.data.following_name;
-        text += '<strong>' + _name + '</strong> published a post';
-    }
-    return text;
+// add new notifications
+function addNotifications(newNotifications, target) {
+    notifications = _.concat(notifications, newNotifications);
+    // show only last 5 notifications
+    notifications.slice(0, 5);
+    showNotifications(notifications, target);
 }
 
 /***/ }),

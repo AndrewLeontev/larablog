@@ -1,6 +1,7 @@
 @extends ('layouts.master')
 @section ('content')
 <div class="col-md-9 col-sm-12">
+
   <div class="panel panel-default">
     <div class="panel-heading">
       All users
