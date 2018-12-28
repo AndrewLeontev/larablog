@@ -6,16 +6,26 @@
  */
 
 require('./bootstrap');
+require('bootstrap-sass');
 
 window._ = require('lodash');
 window.$ = window.jQuery = require('jquery');
-require('bootstrap-sass');
+window.Pusher = require('pusher-js');
+import Echo from "laravel-echo";
 window.Vue = require('vue');
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: '227bb60553d4fa6fefbe',
+    cluster: 'ap3',
+    encrypted: true
+});
 
 var notifications = [];
 
 const NOTIFICATION_TYPES = {
-    follow: 'App\\Notifications\\UserFollowed'
+    follow: 'App\\Notifications\\UserFollowed',
+    newPost: 'App\\Notifications\\NewPost',
 };
 
 $(document).ready(function() {
@@ -24,6 +34,11 @@ $(document).ready(function() {
         $.get('/notifications', function(data) {
             addNotifications(data, "#notifications");
         });
+
+        window.Echo.private(`App.User.${Laravel.userId}`)
+            .notification((notification) => {
+                addNotifications([notification], '#notifications');
+            });
     }
 });
 
@@ -54,20 +69,25 @@ function makeNotification(notification) {
 }
 
 function routeNotification(notification) {
-    var to = '?read=' + notification.id;
+    var to = `?read=${notification.id}`;
     if(notification.type === NOTIFICATION_TYPES.follow) {
         to = 'users' + to;
+    } else if(notification.type === NOTIFICATION_TYPES.newPost) {
+        const postId = notification.data.post_id;
+        to = `posts/${postId}` + to;
     }
     return '/' + to;
 }
 
 function makeNotificationText(notification) {
     var text = '';
-    if(notification.type = NOTIFICATION_TYPES.follow) {
+    if(notification.type === NOTIFICATION_TYPES.follow) {
         const name = notification.data.follower_name;
-        text += '<strong>' + name + '</strong> followed you';
-    };
-    
+        text += `<strong>${name}</strong> followed you`;
+    } else if(notification.type === NOTIFICATION_TYPES.newPost) {
+        const name = notification.data.following_name;
+        text += `<strong>${name}</strong> published a post`;
+    }
     return text;
 }
 /**

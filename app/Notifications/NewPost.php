@@ -55,7 +55,7 @@ class NewPost extends Notification
     {
         return [
             'following_id' => $this->following->id,
-            'following_name' => $this->following->name,
+            'following_name' => $this->following->nickname,
             'post_id' => $this->post->id,
         ];
     }
@@ -69,7 +69,13 @@ class NewPost extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'id' => $this->id,
+            'read_at' => null,
+            'data' => [
+                'following_id' => $this->following->id,
+                'following_name' => $this->following->name,
+                'post_id' => $this->post->id,
+            ],
         ];
     }
 }

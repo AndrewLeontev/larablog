@@ -41,9 +41,9 @@ class UsersController extends Controller
         $follower = auth()->user();
         if($follower->isFollowing($user->nickname)) {
             $follower->unfollow($user->id);
-            return back()->withSuccess("You are no longer friends with {$user->nickname}");
+            return back()->withSuccess("You are no longer friends with {$user->name}");
         }
-        return back()->withErrors("You are not following {$user->nickname}");
+        return back()->withError("You are not following {$user->name}");
     }
 
     public function notifications()

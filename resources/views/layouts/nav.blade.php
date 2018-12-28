@@ -17,7 +17,7 @@
         @role('registered')
         <li class="dropdown">
           <a class="dropdown-toggle" id="notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <i style="font-size:20px;" class="far fa-bell"></i>
+              <span class="glyphicon glyphicon-user"></span>
           </a>
           <ul class="dropdown-menu" aria-labelledby="notificationsMenu" id="notificationsMenu">
               <li class="dropdown-header">No notifications</li>
