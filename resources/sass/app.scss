@@ -2,11 +2,11 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
-@import 'variables';
+// // Variables
+// @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// // Bootstrap
+// @import '~bootstrap/scss/bootstrap';
 
 .navbar-laravel {
   background-color: #fff;
@@ -15,4 +15,33 @@
 
 #notifications.has-notifications {
   color: #bf5329;
+}
+
+.follow {
+  display: inline-block;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 300px 1fr 1fr;
+  grid-template-rows: 75px 75px;
+  grid-template-areas: "avatar nickname posts" "avatar follow comments";
+}
+
+.avatar { grid-area: avatar; }
+
+.nickname { grid-area: nickname; justify-content: flex-start; align-self: flex-end}
+
+.follow { grid-area: follow; justify-content: flex-start; align-self: flex-start}
+
+.posts { grid-area: posts; justify-content: flex-start; align-self: flex-end}
+
+.user-info .grid-container .avatar{
+  display: inline-block;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.all {
+  margin: 20px 0 0 0;
 }

@@ -16,13 +16,15 @@
         
         @role('registered')
         <li class="dropdown">
-          <a class="dropdown-toggle" id="notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <i style="font-size:20px;" class="far fa-bell"></i>
+          <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i style="font-size:20px;" class="far fa-bell"> 
+              <span id="notify" class="badge badge-light"></span>
+            </i>
           </a>
-          <ul class="dropdown-menu" aria-labelledby="notificationsMenu" id="notificationsMenu">
-              <li class="dropdown-header">No notifications</li>
-          </ul>
-      </li>
+          <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton notificationsMenu" id="notificationsMenu">
+              <a class="dropdown-header">No notifications</a>
+          </div>
+        </li>
         <li><a href="/home" class="submenu-link">
               {{ Auth::user()->nickname }} <i id="icon" class="fas fa-arrow-down"></i> 
             <div class="avatar">

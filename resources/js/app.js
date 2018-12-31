@@ -25,6 +25,7 @@ $(document).ready(function() {
     if(Laravel.userId) {
         // load notifications from database
         $.get(`/notifications`, function (data) {
+            $('#notify').html(data.length);
             addNotifications(data, "#notifications");
         });
 

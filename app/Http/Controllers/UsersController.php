@@ -46,7 +46,7 @@ class UsersController extends Controller
         return back()->withError("You are not following {$user->name}");
     }
 
-    public function notifications()
+    public static function notifications()
     {
         return auth()->user()->unreadNotifications()->limit(5)->get()->toArray();
     }
