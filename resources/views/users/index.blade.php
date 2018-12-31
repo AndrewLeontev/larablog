@@ -41,7 +41,7 @@
               </td>
 
               @role ('registered')
-              @if (auth()->check() && auth()->user()->isFollowing($user->nickname))
+              @if (auth()->user()->isFollowing($user->nickname))
                 <td>
                   <form action="{{ route('unfollow', ['nickname' =>$user->nickname]) }}" method="post">
                     @csrf
