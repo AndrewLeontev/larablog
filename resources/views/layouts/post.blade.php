@@ -50,7 +50,7 @@
 					
 					<h2><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h2>
 					<div id="post-prev" style="height: 175px;">
-						<div class="post-body">
+						<div class="post-body" style="height: 175px;">
 							<p>{{ substr($post->body, 0, 255)}}...</p>
 						</div>
 					</div>

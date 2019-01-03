@@ -138,8 +138,11 @@ class PostsController extends Controller
                 if (!$post->tags()->where('id', $dbTag->id)->first()) {
                     $post->tags()->attach([$dbTag->id]);
                 }
+                $dbTag['count'] += 1;
+                $dbTag->save();
            }
         };
+        Tag::doesntHave('posts')->delete();
 
         if($request->hasFile('post_image')){
             

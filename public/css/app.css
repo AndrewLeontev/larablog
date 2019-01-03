@@ -16,7 +16,7 @@
   display: grid;
   grid-template-columns: 300px 1fr 1fr;
   grid-template-rows: 75px 75px;
-  grid-template-areas: "avatar nickname posts" "avatar follow comments";
+  grid-template-areas: "avatar nickname posts" "avatar follow comments-profile";
 }
 
 .avatar {

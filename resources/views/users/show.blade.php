@@ -39,7 +39,7 @@
                 <div class="posts">
                     <h3>Posts: {{ count($user->posts) }}</h3>
                 </div>
-                <div class="comments">
+                <div class="comments-profile">
                     <h3>Comments: {{ count($user->comments) }}</h3>                    
                 </div>
             </div>

@@ -23,4 +23,5 @@ class TagsController extends Controller
 
         return view('tags.all', compact('tags'));
     }
+    
 }

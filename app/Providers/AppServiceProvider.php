@@ -24,7 +24,10 @@ class AppServiceProvider extends ServiceProvider
             $archives = \App\Post::archives();
             $latestPosts = \App\Post::latestPosts();
             $categories = \App\Category::getAll();
-            $tags = \App\Tag::pluck('name')->take(50);
+            $tags = \App\Tag::orderBy('count', 'desc')
+                            ->orderBy('name', 'asc')
+                            ->pluck('name')
+                            ->take(25);
 
             $view->with(
                 compact('archives', 'latestPosts', 'categories', 'tags')

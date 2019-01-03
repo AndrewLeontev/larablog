@@ -33,11 +33,11 @@
          @endforeach
      </ul>
      <ul class="blog-list1">
-        <h3>Tags</h3>
+        <h3>Popular Tags</h3>
         @foreach ($tags as $tag)
             <li><a href="/posts/tags/{{ $tag }}">{{ $tag }}</a></li>
         @endforeach
      </ul>
-     <h4><a href="/tags/all">All tags...</a></h4>
+     <h4 style="margin: 10px 0;"><a href="/tags/all">All tags...</a></h4>
    </div>
  <div class="clearfix"> </div>
