@@ -1,6 +1,7 @@
 (function($) {
     var dialog;
     $('.trigger').on('click', function() {
+      console.log($(this));
       dialog = $('#' + $(this).data('dialog'));
       $(dialog).addClass('dialog--open');
     });

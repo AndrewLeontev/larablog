@@ -17,7 +17,8 @@ class AdminController extends Controller
 
     public function showUsers()
     {
-        return view('admin.data.users');
+        $users = User::all();
+        return view('admin.data.users', compact('users'));
     }
 
     public function showComments()
@@ -70,5 +71,27 @@ class AdminController extends Controller
                           })
                           ->rawColumns(['title', 'action', 'user_id', 'category_id', 'body'])
                           ->make(true);
+    }
+
+    public function deleteUser($nickname)
+    {
+        $user = User::where('nickname', $nickname)->first();
+        if ($user != auth()->user()) {
+            $posts = $user->posts()->get();
+            foreach ($posts as $post) {
+                $post->tags()->detach();
+            }
+            App\Tag::doesntHave('posts')->delete();
+            
+            $user->posts()->delete();
+            $user->comments()->delete();
+            $user->delete();
+
+            session()->flash('massage', 'User have been deleted!');
+            return back();
+        } else {
+            session()->flash('massage', 'You cannot delete yourself');
+            return back();
+        }
     }
 }

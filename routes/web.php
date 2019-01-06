@@ -67,6 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function() {
     Route::get('posts', 'AdminController@showPosts');
     Route::get('users/data', 'AdminController@getUsersData');
     Route::get('posts/data', 'AdminController@getPostsData');
+    Route::delete('user/{nickname}/delete', 'AdminController@deleteUser');
 });
 
 /* 

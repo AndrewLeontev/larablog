@@ -146,10 +146,10 @@ button.trigger {
   margin: 0;
 }
 .don .dialog h2:after {
-  content: 'don';
+  content: '';
 }
 .sandra .dialog h2:after {
-  content: 'sandra';
+  content: '';
 }
 .sally .dialog h2:after {
   content: '';

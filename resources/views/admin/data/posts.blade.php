@@ -3,12 +3,14 @@
 
 <div class="col-md-9 col-sm-12">
 
-    <button class="learn-more">
-            <div class="circle">
-              <span class="icon arrow"></span>
-            </div>
-            <p class="button-text"><a href="/admin">Back</a></p>
-    </button>
+    <a href="/admin">
+        <button class="learn-more">
+                <div class="circle">
+                  <span class="icon arrow"></span>
+                </div>
+                <p class="button-text">Back</p>
+        </button>
+    </a>
 
     <table class="table table-bordered" id="users-table">
         <thead>
