@@ -1,56 +1,16 @@
 @extends ('layouts.master')
-
 @section ('content')
+
+@include ('layouts.modal')
+
 <div class="col-md-9 col-sm-12">
-
-    {{-- <div class="blog_left single_left post_show">
-        <div class="row">
-            <div class="post-img col-sm-3">
-                    <div class="post-poster" >
-                            <img src="/uploads/posts/{{ $post->post_image }}" alt="" class="image-responsive">
-                    </div>
-            </div>
-            <div class="post-head col-sm-9">
-                    <h2 class="head"><a href="/posts/{{ strtolower($post->slug) }}">{{ $post->title }}</a></h2>
-                    <h3 class="info">Posted {{ $post->created_at->diffForHumans() }} in <a href="/categories/{{ $post->category->name }}">{{ $post->category->name }}</a> By <a href="/users/{{ $post->user->nickname }}">{{ $post->user->nickname }}</a>.</h3>
-                    <div class="btn-post">
-                        @if (Auth::check() && Auth::user() == $post->user()->first())
-                            <a id="btn-tooltip" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a>
-                            <a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
-                        @endif
-                    </div>
-            </div>
-            
-
-
-            <div class="post_content  col-sm-12 post-body" style="padding: 20px 20px;">
-                {!! 
-                    str_replace('<img', '<img class="img-responsive" style="max-width: 100%"', Markdown::convertToHtml(
-                        e($post->body)
-                    ))
-                !!}
-            </div>
-
-            <div class="col-sm-12">
-                    @include ('post.tags')
-            </div>
-        </div>
-
-        </div> --}}
 
         <div class="post-block single-post wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                 <div class="post-holder">
                     <div class="img-holder">
                         <img style="max-width: 720px; max-height: 435px;" src="/uploads/posts/{{ $post->post_image }}" alt="post image">
                     </div>
-                    
-                    {{-- <time datetime=""><a style="height: 39px; padding-top: 15px;" href="/categories/{{ $post->category->name }}">{{ $post->created_at->format(' jS  F ') }} - {{ $post->category->name }}</a>
-                    </time>
-                    @if (Auth::check() && Auth::user() == $post->user()->first())
-                        <time><a id="btn-tooltip" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a></time>
-                            
-                        <time><a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a></time>
-                    @endif --}}
+
                     <h2>{{ $post->title }}</h2>
 
                     {!! 
@@ -69,7 +29,14 @@
                         @if (Auth::check() && Auth::user() == $post->user()->first())
                             <strong class="text" style="float:right">
                                 <a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
-                                <a id="btn-tooltip" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a>
+                                <a style="display: inline-block; font-size: 18px;" data-toggle="dataTable" data-form="deleteForm">
+                                        {!! Form::model($post, ['method' => 'delete', 'route' => ['posts.destroy', $post->slug], 'class' =>'form-inline form-delete']) !!}
+                                        {!! Form::hidden('slug', $post->slug) !!}
+                                        <i  class="fas fa-trash-alt">
+                                            {!! Form::submit(trans(""), ['class' => 'btn btn-xs btn-danger delete', 'id' => 'none-display', 'name' => 'delete_modal']) !!}
+                                        </i>
+                                        {!! Form::close() !!}
+                                </a>
                             </strong>
                         @endif
                     </footer>
@@ -95,17 +62,4 @@
     @endif
 
 </div>  
-@role ('registered')
-	<div id="dialogEffects" class="don">
-		<div id="somedialog" class="dialog">
-			<div class="dialog__overlay"></div>
-			<div class="dialog__content">
-				<h2><strong>Do you really want to delete this post?</h2>
-				<div><a href="/posts/{{ $post->slug }}/delete"><button class="action" >Yes</button></a>
-				<button class="action" data-dialog-close="">Close</button></div>
-			</div>
-		</div>
-	</div>
-@endrole
-
 @endsection

@@ -36,7 +36,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- Custom Theme files -->
 <link rel="stylesheet" type="text/css" href="/css/markup.css">
 <link rel="stylesheet" type="text/css" href="/css/responsive.css">
-{{-- <link rel="stylesheet" href="/css/animate.css"> --}}
 <link rel="stylesheet" href="/css/colors.css">
 <link rel="stylesheet" href="/css/404.css">
 <!----start-top-nav-script---->

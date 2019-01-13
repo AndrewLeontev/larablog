@@ -2,7 +2,6 @@
     <h3>From the Blog</h3>
     @foreach ($latestPosts as $post)
       <ul class="list1 list2">
-        {{-- <li class="list1_img"><img src="/images/f1.jpg" class="img-responsive" alt=""/></li> --}}
         <li class="list1_desc row">
           <li class="list1_img"><img src="/uploads/posts/{{ $post->post_image }}" class="img-responsive" alt=""/></li>
           <a href="/posts/{{ $post->id }}"><p class="m_3">{{ $post->title }}</p></a>

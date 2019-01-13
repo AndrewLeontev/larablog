@@ -86,6 +86,8 @@ class AdminController extends Controller
             
             $user->posts()->delete();
             $user->comments()->delete();
+            $user->followers()->detach();
+            $user->follows()->detach();
             $user->delete();
 
             session()->flash('massage', 'User have been deleted!');

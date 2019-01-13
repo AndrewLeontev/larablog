@@ -1,20 +1,4 @@
 (function($) {
-//     var dialog;
-//     $('.trigger').on('click', function() {
-//       console.log($(this));
-//       dialog = $('#' + $(this).data('dialog'));
-//       $(dialog).addClass('dialog--open');
-//     });
-//     $('.action, .dialog__overlay').on('click', function() {
-//       $(dialog).removeClass('dialog--open');
-//       $(dialog).addClass('dialog--close');
-//       $(dialog).find('.dialog__content').on('webkitAnimationEnd MSAnimationEnd oAnimationEnd animationend', function() {
-//         $(dialog).removeClass('dialog--close');
-//       });
-//     });
-    
-    
-    
 $('a[data-form="deleteForm"]').on('click', '.form-delete', function(e){
   e.preventDefault();
   var $form=$(this);
@@ -23,14 +7,4 @@ $('a[data-form="deleteForm"]').on('click', '.form-delete', function(e){
           $form.submit();
       });
 });
-    
-    
-    
-//     $('.dialogEffects').on('click', function(e) {
-//       e.preventDefault();
-//       $('.dialogEffects').removeClass('selected');
-//       $(this).addClass('selected');
-//       var cssClass = $(this).data('class');
-//       $('#dialogEffects').removeAttr('class').addClass(cssClass);
-//     });
-  })(jQuery);
+})(jQuery);
