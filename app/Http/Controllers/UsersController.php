@@ -57,7 +57,7 @@ class UsersController extends Controller
         return view('users.changepassword', compact('user'));
     }
 
-    public function storePassword(Request $request, $nickname)
+    public function storePassword($nickname)
     {
         $user = User::where('nickname', $nickname)->first();
 
@@ -69,8 +69,10 @@ class UsersController extends Controller
         $oldpwd = request('old_password');
         
         if (Hash::check($oldpwd, $user->password)) {
-            $password = bcrypt($request->only('password'));
-            $user->update($password);
+            $password = bcrypt(request('password'));
+            $user->update([
+                'password' => $password
+            ]);
             session()->flash('message', 'User have been updated!');
             return redirect()->home();
         } else {
