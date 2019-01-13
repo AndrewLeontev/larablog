@@ -151,6 +151,7 @@ return [
         /*
          * Package Service Providers...
          */
+        'Collective\Html\HtmlServiceProvider',
 
         /*
          * Application Service Providers...
@@ -213,6 +214,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
     ],
 
 ];

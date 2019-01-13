@@ -21,7 +21,7 @@ Route::post('/posts', 'PostsController@store');
 Route::post('/posts/{post}/comments', 'CommentsController@store');
 Route::get('/search', 'PostsController@search');
 
-Route::get('/posts/{id}/delete', 'PostsController@destroy');
+Route::delete('/posts/{id}/delete', 'PostsController@destroy')->name('posts.destroy');
 Route::get('/posts/{id}/edit', 'PostsController@edit');
 Route::patch('/posts/{id}', 'PostsController@update');
 
@@ -67,7 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function() {
     Route::get('posts', 'AdminController@showPosts');
     Route::get('users/data', 'AdminController@getUsersData');
     Route::get('posts/data', 'AdminController@getPostsData');
-    Route::delete('user/{nickname}/delete', 'AdminController@deleteUser');
+    Route::delete('user/{nickname}/delete', 'AdminController@deleteUser')->name('admin.deleteuser');
 });
 
 /* 

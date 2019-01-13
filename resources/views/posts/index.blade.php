@@ -10,6 +10,7 @@
 			<div class="blog_left post_show post_index">
 				<div class="row">
 					@foreach ($posts as $post)
+					
 						@include ('layouts.post')
 					@endforeach  
 				</div>

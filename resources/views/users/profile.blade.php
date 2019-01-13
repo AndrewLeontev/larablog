@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 @section ('content')
-
+@include ('layouts.modal')
 
 <div class="col-md-9 col-sm-12">
                 
@@ -69,8 +69,17 @@
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->created_at }}</td>
                                         <td>
-                                                <a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
-                                                <a id="btn-tooltip" title="Delete post" href="#"><i data-dialog="somedialog"  class="fas fa-trash-alt trigger"></i></a>
+                                                <strong style="float: right">
+                                                        <a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
+                                                        <a style="font-size:18px; display: inline-block;" data-toggle="dataTable" data-form="deleteForm">
+                                                                {!! Form::model($post, ['method' => 'delete', 'route' => ['posts.destroy', $post->slug], 'class' =>'form-inline form-delete']) !!}
+                                                                {!! Form::hidden('slug', $post->slug) !!}
+                                                                <i  class="fas fa-trash-alt">
+                                                                        {!! Form::submit(trans(""), ['class' => 'btn btn-xs btn-danger delete', 'id' => 'none-display', 'name' => 'delete_modal']) !!}
+                                                                </i>
+                                                                {!! Form::close() !!}
+                                                        </a>
+                                                </strong>
 
                                         </td>
                                 </tr>
@@ -79,18 +88,6 @@
                         </tbody>
                 </table>
                 {{ $posts->links() }}
-                @role ('registered')
-                        <div id="dialogEffects" class="don">
-                                <div id="somedialog" class="dialog">
-                                        <div class="dialog__overlay"></div>
-                                        <div class="dialog__content">
-                                                <h2><strong>Do you really want to delete this post?</h2>
-                                                <div><button class="action" ><a href="/posts/{{ $post->slug }}/delete">Yes</a></button>
-                                                <button class="action" data-dialog-close="">Close</button></div>
-                                        </div>
-                                </div>
-                        </div>
-                @endrole
                 @endif
                 
 

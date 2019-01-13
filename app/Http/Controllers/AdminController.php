@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\User;
 use App\Post;
+use App\Tag;
 
 class AdminController extends Controller
 {
@@ -81,7 +82,7 @@ class AdminController extends Controller
             foreach ($posts as $post) {
                 $post->tags()->detach();
             }
-            App\Tag::doesntHave('posts')->delete();
+            Tag::doesntHave('posts')->delete();
             
             $user->posts()->delete();
             $user->comments()->delete();

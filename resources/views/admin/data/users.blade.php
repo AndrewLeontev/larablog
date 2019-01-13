@@ -1,5 +1,7 @@
 @extends ('layouts.master')
 @section('content')
+
+@include ('layouts.modal')
 <div class="col-md-9 col-sm-12">
     @role ('admin')
     <div class="panel panel-default">
@@ -42,22 +44,20 @@
                             <i class="fas fa-ban"></i>
                         </button>
 
-                        <button data-dialog="somedialog" title="delete user" class="btn btn-danger trigger">
-                            <i class="fas fa-trash"></i>
-                        </button>
+                        <a style="font-size:18px; display: inline-block;" data-toggle="dataTable" data-form="deleteForm">
+                                {!! Form::model($user, ['method' => 'delete', 'route' => ['admin.deleteuser', $user->nickname], 'class' =>'form-inline form-delete']) !!}
+                                {!! Form::hidden('slug', $user->nickname) !!}
+                                <button title="delete user" class="btn btn-danger">
+                                    <i class="fas fa-trash">
+                                        {!! Form::submit(trans(""), ['class' => 'btn btn-xs btn-danger delete', 'id' => 'none-display', 'name' => 'delete_modal']) !!}
+                                    </i>
+                                </button>
+                                {!! Form::close() !!}
+                        </a>
+                        
+                        
                     </th>
                 </tr>
-                
-                <div id="dialogEffects" class="sandra">
-                    <div id="somedialog" class="dialog">
-                        <div class="dialog__overlay"></div>
-                        <div class="dialog__content">
-                            <h2><strong>Do you really want to delete this user - {{ $user->nickname }}?</h2>
-                            <div><a href="/admin/user/{{ $user->nickname }}/delete"><button class="action" >Yes</button></a>
-                            <button class="action" data-dialog-close="">Close</button></div>
-                        </div>
-                    </div>
-                </div>
             @endforeach
             </tbody>
         </table>
