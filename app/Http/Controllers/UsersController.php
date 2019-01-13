@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Notifications\UserFollowed;
 use App\User;
 use Auth;
+use Hash;
 
 class UsersController extends Controller
 {
@@ -44,6 +45,40 @@ class UsersController extends Controller
             return back()->withSuccess("You are no longer friends with {$user->name}");
         }
         return back()->withError("You are not following {$user->name}");
+    }
+
+    public function changePassword($nickname) 
+    {
+        $user = User::where('nickname', $nickname)->first();
+        if ($user != auth()->user()) {
+            session()->flash('message', 'You don\'t have permissions');
+            return redirect('home');
+        }
+        return view('users.changepassword', compact('user'));
+    }
+
+    public function storePassword(Request $request, $nickname)
+    {
+        $user = User::where('nickname', $nickname)->first();
+
+        if ($user->id != auth()->user()->id) {
+            session()->flash('message', 'You don\'t have permission!');
+            return redirect ('/home');
+        };
+
+        $oldpwd = request('old_password');
+        
+        if (Hash::check($oldpwd, $user->password)) {
+            $password = bcrypt($request->only('password'));
+            $user->update($password);
+            session()->flash('message', 'User have been updated!');
+            return redirect()->home();
+        } else {
+            session()->flash('message', 'Wrong password!');
+            return back()->withErrors([
+                'message' => 'Wrong password. Please check and try again.'
+            ]);
+        } 
     }
 
     public static function notifications()

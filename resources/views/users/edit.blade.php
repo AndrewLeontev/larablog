@@ -7,7 +7,7 @@
         @if ($user == Auth::user())
           <h1>Edit user</h1>
           
-          <form method="POST" action="/users/{{ $user->name }}">
+          <form method="POST" action="/users/{{ $user->nickname }}">
               @csrf
               {{ method_field('PATCH') }}
     
@@ -27,8 +27,9 @@
                 <label for="password">For submiting changes type password</label>
                 <input type="password" class="form-control" id="password"  name="password">
               </div>
-    
-    
+              <div class="form-group">
+                <a class="link" href="/user/{{ $user->nickname }}/password/">Edit password</a>
+              </div>
               <center><button type="submit" class="btn btn-primary">Update profile</button></center>
             </form>
           @else 

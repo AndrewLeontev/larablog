@@ -66,8 +66,8 @@
                                 @foreach($posts as $post)
                                 <tr>
 
-                                        <td>{{ $post->title }}</td>
-                                        <td>{{ $post->created_at }}</td>
+                                        <td><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></td>
+                                        <td>{{ $post->created_at->toFormattedDateString() }}</td>
                                         <td>
                                                 <strong style="float: right">
                                                         <a id="btn-tooltip" title="Edit post" href="/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>

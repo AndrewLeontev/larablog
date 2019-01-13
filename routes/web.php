@@ -48,6 +48,8 @@ Route::get('/user/edit/{name}', 'SessionsController@edit');
 Route::patch('/users/{name}', 'SessionsController@update');
 
 // Route::get('/users', 'SessionsController@showAll');
+Route::get('/user/{nickname}/password', 'UsersController@changePassword');
+Route::patch('/user/{nickname}/password', 'UsersController@storePassword');
 Route::get('/users/all', 'SessionsController@getUsersData');
 Route::get('/users/{id}', 'SessionsController@show');
 Route::get('/home', 'SessionsController@home')->name('home');

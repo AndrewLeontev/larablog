@@ -64,7 +64,7 @@ class SessionsController extends Controller
     public function update(Request $request)
     {
 
-        $user = User::where('name', $request->name)->first();
+        $user = User::where('nickname', $request->nickname)->first();
 
         if ($user->id != auth()->user()->id) {
             session()->flash('message', 'You don\'t have permission!');

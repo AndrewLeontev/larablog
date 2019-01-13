@@ -1941,7 +1941,7 @@ aside.version-ii .subscribe-form .form-control:focus {
 -------------------------------------------------------------------*/
 
 .post-block {
-	padding: 0 17px 0 13px;
+	padding: 0 10px 0 10px;
 	position: relative;
 	font-size: 12px;
 	line-height: 2.17;
@@ -2191,7 +2191,7 @@ aside.version-ii .subscribe-form .form-control:focus {
 }
 
 .posts-blocks .post-block {
-	max-width: 350px;
+	max-width: 100%;
 	margin: 0 auto 31px;
 	font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
 }
