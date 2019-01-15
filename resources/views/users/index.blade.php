@@ -6,7 +6,7 @@
     <div class="panel-heading">
       All users
     </div>
-    
+
     <div class="panel-body">
       <table class="table table-striped task-table">
         <thead id="thead">
@@ -33,7 +33,7 @@
               </td>
 
               <td>
-                <div>{{ count($user->posts) }} - posts</div>
+                <div>{{ count($user->posts) }} posts</div>
               </td>
 
               <td>

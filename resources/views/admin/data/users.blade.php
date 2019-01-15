@@ -11,7 +11,7 @@
 
         <div class="panel-body">
         <table class="table table-striped task-table">
-            <thead>
+            <thead id="thead">
             <th scope="col">Avatar</th>
             <th scope="col">User</th>
             <th scope="col">Registered</th>
@@ -20,22 +20,22 @@
 
             <tbody>
             @foreach ($users as $user)
-                <tr>
-                    <th scope="row">
+                <tr class="user-tr" style="margin-bottom: 0px; margin-top: 20px;">
+                    <td class="centered-text" scope="row">
                         <div class="avatar">
                         <img src="/uploads/avatars/{{ $user->avatar }}" alt=""  class="img-responsive">
                         </div>
-                    </th>
+                    </td>
                     
-                    <th clphpass="table-text">
-                        <div>{{ $user->nickname }}</div>
-                    </th>
+                    <td clphpass="table-text">
+                        <div><a href="/users/{{ $user->nickname }}">{{ $user->nickname }}</a></div>
+                    </td>
 
-                    <th clphpass="table-text">
-                        <div>{{ $user->created_at->toFormattedDateString() }}</div>
-                    </th>
+                    <td clphpass="table-text">
+                        <div>Registered at {{ $user->created_at->toFormattedDateString() }}</div>
+                    </td>
 
-                    <th class="actions">
+                    <td class="actions">
                         <button title="edit user" onClick='location.href="/user/edit/{{ $user->nickname }}"' class="btn btn-success">
                             <i class="fas fa-edit"></i>
                         </button>
@@ -54,9 +54,7 @@
                                 </button>
                                 {!! Form::close() !!}
                         </a>
-                        
-                        
-                    </th>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
