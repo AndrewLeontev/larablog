@@ -85,3 +85,51 @@ strong.text a {
   color: blue !important;
 }
 
+td,
+tr,
+tbody {
+  width: 100%;
+  display: block;
+  vertical-align: middle !important;
+}
+
+.user-tr {
+  margin-bottom: 35px;
+}
+
+@media (min-width: 600px) {
+  table {
+    display: table;
+    width: auto;
+  }
+
+  tbody {
+    display: table-row-group;
+    width: auto;
+  }
+
+  tr {
+    display: table-row;
+    width: auto;
+  }
+
+  td {
+    display: table-cell;
+    width: auto;
+  }
+
+  td button {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  #thead {
+    display: none;
+  }
+
+  .centered-text {
+    text-align: center;
+  }
+}
+

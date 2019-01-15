@@ -6,38 +6,38 @@
     <div class="panel-heading">
       All users
     </div>
-
+    
     <div class="panel-body">
       <table class="table table-striped task-table">
-        <thead>
+        <thead id="thead">
           <th>Avatar</th>
           <th>User</th>
           <th>Posts</th>
           <th>Registered</th>
           @role ('registered')
-          <th> </th>
+          <th></th>
           @endrole
         </thead>
 
         <tbody>
           @foreach ($users as $user)
-            <tr>
-              <td>
-                <div class="avatar">
+            <tr class="user-tr">
+              <td class="centered-text">
+                <div class="avatar ">
                   <img src="/uploads/avatars/{{ $user->avatar }}" alt=""  class="img-responsive">
                 </div>
               </td>
               
-              <td clphpass="table-text">
-                <div>{{ $user->nickname }}</div>
+              <td class="centered-text">
+                <div><a style="color:blue" href="/users/{{ $user->nickname }}">{{ $user->nickname }}</a></div>
               </td>
 
-              <td class="table-text">
-                <div>{{ count($user->posts) }}</div>
+              <td>
+                <div>{{ count($user->posts) }} - posts</div>
               </td>
 
-              <td clphpass="table-text">
-                <div>{{ $user->created_at->toFormattedDateString() }}</div>
+              <td>
+                <div>Registered at {{ $user->created_at->toFormattedDateString() }}</div>
               </td>
 
               @role ('registered')
@@ -55,7 +55,7 @@
                 <td>
                   <form action="{{ route('follow', ['nickname' =>$user->nickname]) }}" method="post">
                     @csrf
-                    <button style="float:right" type="submit" id="delete-follow-{{ $user->nickname }}" class="btn btn-danger">
+                    <button style="min-width: 95px;float:right" type="submit" id="delete-follow-{{ $user->nickname }}" class="btn btn-success">
                       <i class="fa fa-btn fa-user"></i> Follow
                     </button>
                   </form>
